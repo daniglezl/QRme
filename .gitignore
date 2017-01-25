@@ -1,0 +1,23 @@
+# Ignore vagrant folder
+.vagrant
+
+# Ignore bundler config.
+.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+
+# Ignore application configuration
+config/application.yml
+
+# Ignoring node modules folder
+node_modules
+
+# Ignore rvm configs
+.ruby-gemset
+.ruby-version
+
+# Ignore DS_Store (mac)
+**/.DS_Store

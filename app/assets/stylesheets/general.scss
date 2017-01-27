@@ -50,6 +50,10 @@ body {
 
 .main-nav-bar {
   height: 100px;
+  .navbar-toggle {
+    padding-top: 33px;
+    padding-bottom: 33px;
+  }
   .navbar-brand {
     padding: 30px 15px;
     &:hover { background-color: transparent; }
@@ -76,4 +80,25 @@ body {
       }
     }
   }
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    .secondary-subtitle {
+      width: 80%;
+    }
+  }
+
+  .main-nav-bar {
+    .navbar-collapse {
+      background-color: $white;
+    }
+    li {
+      a {
+        border-bottom-color: $seconday!important;
+        color: inherit;
+      }
+    }
+  }
+
 }

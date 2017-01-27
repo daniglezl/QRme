@@ -1,10 +1,31 @@
 @import "colors";
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,400,500,700,800');
 
+// mixins
+@mixin selected-tab {
+  background-color: transparent!important;
+  border-bottom: 2px solid $white;
+}
+
 body {
   margin: 0!important;
   font-family: 'Dosis', sans-serif;
 }
+
+// Main nav
+body {
+  &.statics.home {
+    .main-nav-bar li.home a {
+      @include selected-tab;
+    }
+  }
+  &.devise.sessions.new {
+    .main-nav-bar li.log-in a {
+      @include selected-tab;
+    }
+  }
+}
+
 .main-header {
   padding-top: 0;
   background-image: linear-gradient(45deg, $primary, $seconday);
@@ -51,10 +72,6 @@ body {
       font-weight: 200;
       &:hover {
         background-color: transparent;
-        border-bottom: 2px solid $white;
-      }
-      &.active {
-        background-color: transparent!important;
         border-bottom: 2px solid $white;
       }
     }

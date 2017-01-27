@@ -16,11 +16,11 @@
 
     <div class="collapse navbar-collapse" id="main-nav-bar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active">
+        <li class="home">
           <%= link_to "Home", root_path, class: "active" %>
         </li>
 
-        <li>
+        <li class="log-in">
           <% if current_user %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           <% else %>

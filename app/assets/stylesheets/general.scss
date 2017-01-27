@@ -1,0 +1,62 @@
+@import "colors";
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,400,500,700,800');
+
+body {
+  margin: 0!important;
+  font-family: 'Dosis', sans-serif;
+}
+.main-header {
+  padding-top: 0;
+  background-image: linear-gradient(45deg, $primary, $seconday);
+  .main-subtitle, .secondary-subtitle {
+    color: $white;
+    text-align: center;
+  }
+  .secondary-subtitle {
+    width: 40%;
+    margin: 60px auto;
+    font-weight: 200;
+    letter-spacing: .1em;
+  }
+  .sign-up-btn {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    letter-spacing: .1em;
+  }
+
+}
+
+.main-nav-bar {
+  height: 100px;
+  .navbar-brand {
+    padding: 30px 15px;
+    &:hover { background-color: transparent; }
+    img { height: 100%; }
+  }
+  .navbar-toggle {
+    .icon-bar { background: $white; }
+  }
+  a { height: 100px; }
+  li {
+    box-sizing: border-box;
+    padding: 25px 0;
+    a {
+      height: 50px;
+      line-height: 20px;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: $white;
+      letter-spacing: .1em;
+      font-weight: 200;
+      &:hover {
+        background-color: transparent;
+        border-bottom: 2px solid $white;
+      }
+      &.active {
+        background-color: transparent!important;
+        border-bottom: 2px solid $white;
+      }
+    }
+  }
+}

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root to: 'statics#home'
+  root to: 'dashboard#index'
 
   as :user do
     # sessions

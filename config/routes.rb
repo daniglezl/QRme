@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root to: 'dashboard#index'
+  root to: 'statics#home'
 
   as :user do
     # sessions
@@ -17,5 +15,7 @@ Rails.application.routes.draw do
     get :profile, to: 'devise/registrations#edit', as: :edit_user_registration
   end
   devise_for :users, skip: [:sessions]
+
+  get :dashboard, to: 'dashboard#index', as: :dashboard_index
 
 end

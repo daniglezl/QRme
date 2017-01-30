@@ -20,6 +20,10 @@
           <%= link_to "Home", root_path, class: "active" %>
         </li>
 
+        <li class="dashboard">
+          <%= link_to "Dashboard", dashboard_index_path, class: "active" %>
+        </li>
+
         <li class="log-in">
           <% if current_user %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>

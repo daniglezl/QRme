@@ -1,6 +1,12 @@
-$primary: #6B1AE5;
+$text: #444343;
+$primary: #6530CF;
 $seconday: #DA23F5;
 $white: #FFFFFF;
+$light-bg: #ECEFF4;
 
 // Bootstrap
-$btn-primary-bg: lighten($seconday, 15);
+$btn-primary-bg: $primary;
+
+$btn-default-bg: lighten($seconday, 15);
+$btn-default-color:              #fff !default;
+$btn-default-border:             $seconday;

@@ -1,8 +1,9 @@
+@import "colors";
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,400,500,700,800');
 
 body {
   background-color: #fff;
-  color: #333;
+  color: $text;
   font-family: 'Dosis', sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -23,16 +24,8 @@ pre {
 }
 
 a {
-  color: #000;
-
-  &:visited {
-    color: #666;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+  color: $text;
+  &:hover { color: $text; }
 }
 
 th {

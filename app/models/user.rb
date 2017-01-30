@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :timeoutable
 
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
+
   def is?(role)
     roles.include?(role.to_s)
   end

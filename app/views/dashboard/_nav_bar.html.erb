@@ -2,7 +2,9 @@
   <%= image_tag "icon_color.svg", alt: "QRme", class: "dashboard-logo" %>
   <div class="profile-container">
     <div class="profile-image">
-      <%= image_tag current_user.gravatar_url(default: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiatqbI1_HRAhXCJCYKHf_BCTUQjRwIBw&url=http%3A%2F%2Fwww.clipartpanda.com%2Fcategories%2Fsmiley-face-star-clipart&psig=AFQjCNFPT3TLtcvRT2FiTPmtBzUQVgyPpw&ust=1486134226306582") %>
+      <%= image_tag current_user.gravatar_url(
+        default: "https://s3.amazonaws.com/qrme/assets/happy_face.png"
+      ) %>
     </div>
     <span class="glyphicon glyphicon-cog profile" aria-hidden="true"></span>
   </div>

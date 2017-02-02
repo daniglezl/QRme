@@ -1,0 +1,11 @@
+<div class="col-xs-2 dashboard-sidebar">
+  <%= image_tag "icon_color.svg", alt: "QRme", class: "dashboard-logo" %>
+  <div class="profile-container">
+    <div class="profile-image">
+      <%= image_tag "https://www.gravatar.com/avatar/
+        #{ Digest::MD5.hexdigest current_user.email }
+        ?d=#{ ERB::Util.url_encode(image_url("happy_face.svg")) }" %>
+    </div>
+    <span class="glyphicon glyphicon-cog profile" aria-hidden="true"></span>
+  </div>
+</div>

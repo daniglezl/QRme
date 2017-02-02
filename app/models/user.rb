@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include Gravtastic
+  gravtastic
+
   ROLES = %w[ admin regular ]
 
   devise :database_authenticatable, :registerable,

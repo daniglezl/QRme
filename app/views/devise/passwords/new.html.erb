@@ -4,7 +4,9 @@
 </div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <% if !devise_error_messages!.blank? %>
+    <%= render "shared/devise_form_errors", errors: devise_error_messages! %>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :email %>

@@ -1,0 +1,5 @@
+<div class="profile-image">
+  <%= image_tag User.find(current_user.id).gravatar_url(
+    default: "https://s3.amazonaws.com/qrme/assets/happy_face.png"
+  ) %>
+</div>

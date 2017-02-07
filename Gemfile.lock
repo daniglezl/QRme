@@ -205,6 +205,7 @@ DEPENDENCIES
   cancancan
   coffee-rails (~> 4.2)
   devise
+  font-awesome-rails
   gravtastic
   jbuilder (~> 2.5)
   jquery-rails

@@ -1,11 +1,32 @@
 <div class="col-xs-2 dashboard-sidebar">
   <%= image_tag "icon_color.svg", alt: "QRme", class: "dashboard-logo" %>
   <div class="profile-container">
-    <div class="profile-image">
-      <%= image_tag current_user.gravatar_url(
-        default: "https://s3.amazonaws.com/qrme/assets/happy_face.png"
-      ) %>
-    </div>
-    <span class="glyphicon glyphicon-cog profile" aria-hidden="true"></span>
+    <%= render 'shared/avatar' %>
+    <%= link_to edit_user_registration_path, class: "profile", remote: true do %>
+      <%= fa_icon "cog", class: "spin" %>
+    <% end %>
+    <span class="username"><%= current_user.username.upcase %></span>
   </div>
+  <ul class="nav nav-pills nav-stacked">
+    <li>
+      <%= link_to "#" do %>
+        <%= fa_icon "calendar" %> Events
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <%= fa_icon "bar-chart" %> Stats
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <%= fa_icon "users" %> Users
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= fa_icon "sign-out" %> Log Out
+      <% end %>
+    </li>
+  </ul>
 </div>

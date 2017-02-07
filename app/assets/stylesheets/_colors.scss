@@ -1,12 +1,18 @@
 $text: #444343;
+$light-text: #7D949F;
 $primary: #6530CF;
 $seconday: #DA23F5;
 $white: #FFFFFF;
 $light-bg: #ECEFF4;
+$red: #FF5D4F;
 
 // Bootstrap
 $btn-primary-bg: $primary;
 
 $btn-default-bg: lighten($seconday, 15);
-$btn-default-color:              #fff !default;
-$btn-default-border:             $seconday;
+$btn-default-color: #fff;
+$btn-default-border: $seconday;
+
+$btn-danger-bg: $red;
+$btn-danger-color: #fff;
+$btn-danger-border: darken($btn-danger-bg, 5%);

@@ -1,0 +1,48 @@
+<div class="header">
+  <%= render 'shared/avatar' %>
+  <h2>Profile</h2>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, remote: true }) do |f| %>
+  <div class="errors-container">
+    <%= render 'shared/form_errors', object: resource %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    <% if @minimum_password_length %>
+
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class: "btn btn-primary btn-lg" %>
+  </div>
+<% end %>
+
+<h4>Unhappy?</h4>
+<%= button_to "Cancel my account", registration_path(resource_name),
+  data: { confirm: "Are you sure?",
+  message: 'All your information will be lost and cannot be recovered.',
+  }, class: "btn btn-danger",method: :delete %>

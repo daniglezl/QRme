@@ -27,6 +27,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'cancancan'
 gem 'rails_admin', '~> 1.0'
 gem 'gravtastic'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'byebug', platform: :mri

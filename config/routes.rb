@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     get 'users/cancel', to: 'devise/registrations#cancel', as: :cancel_user_registration
     get :signup, to: 'devise/registrations#new', as: :new_user_registration
     get :profile, to: 'devise/registrations#edit', as: :edit_user_registration
+    patch :profile, to: 'devise_custom/registrations#update', as: :update_user_registration
   end
-  devise_for :users, skip: [:sessions]
+  devise_for :users, skip: [:sessions], controllers: { registrations: 'devise_custom/registrations' }
 
   get :dashboard, to: 'dashboard#index', as: :dashboard_index
 

@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require vex.combined
+//= require sweetalert
+//= require toastr
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .

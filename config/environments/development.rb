@@ -56,4 +56,7 @@ Rails.application.configure do
 
   # For vagrant
   config.web_console.whitelisted_ips = '10.0.2.2'
+
+  # rack live reload
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
 end

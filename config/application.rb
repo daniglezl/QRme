@@ -14,8 +14,5 @@ module QRme
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       "#{html_tag}".html_safe
     }
-
-    # rack live reload
-    config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
   end
 end

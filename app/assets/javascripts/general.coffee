@@ -1,7 +1,7 @@
 window.qrModal = {
-  open: (content) ->
+  open: (content, cclass="") ->
     vex.dialog.open()
-    $(".vex .vex-content").html(content)
+    $(".vex .vex-content").addClass(cclass).html(content)
 }
 
 # toastr configuration
@@ -35,6 +35,7 @@ $.rails.showConfirmDialog = (link) ->
     }, (isConfirm) ->
       if isConfirm
         $.rails.confirmed link
+      swal.close()
       return
 
 $(document).on('turbolinks:load', ->

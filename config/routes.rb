@@ -19,4 +19,7 @@ Rails.application.routes.draw do
 
   get :dashboard, to: 'dashboard#index', as: :dashboard_index
 
+  resources :events
+  resources :event_instances, only: :destroy
+
 end

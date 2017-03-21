@@ -10,6 +10,9 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
+  has_many :events
+  has_many :event_instances, through: :events
+
   def is?(role)
     roles.include?(role.to_s)
   end

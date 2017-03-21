@@ -8,8 +8,9 @@
     <span class="username"><%= current_user.username.upcase %></span>
   </div>
   <ul class="nav nav-pills nav-stacked">
-    <li>
-      <%= link_to "#" do %>
+    <li <%= params[:controller] == "dashboard" && params[:action] == "index" ?
+    "class=active" : "" %>>
+      <%= link_to dashboard_index_path do %>
         <%= fa_icon "calendar" %> Events
       <% end %>
     </li>

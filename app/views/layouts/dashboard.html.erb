@@ -10,6 +10,11 @@
   </head>
 
   <body class="<%= "#{params[:controller].sub("/", " ")} #{params[:action]}" %>">
-    <%= yield %>
+    <div class="row">
+      <%= render 'nav_bar' %>
+      <div class="content col-xs-10">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

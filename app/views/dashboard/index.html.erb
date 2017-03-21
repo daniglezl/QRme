@@ -1,6 +1,6 @@
-<div class="row">
-  <%= render 'nav_bar' %>
-  <div class="content col-xs-10">
-    
-  </div>
-</div>
+<%= link_to new_event_path,
+class: "btn btn-success active btn-lg", remote: true do %>
+  <%= fa_icon "plus" %> New Event
+<% end %>
+
+<%= render 'events/events_list', event_instances: @event_instances %>

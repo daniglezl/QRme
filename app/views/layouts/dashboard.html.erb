@@ -11,7 +11,7 @@
 
   <body class="<%= "#{params[:controller].sub("/", " ")} #{params[:action]}" %>">
     <div class="row">
-      <%= render 'nav_bar' %>
+      <%= render 'shared/nav_bar' %>
       <div class="content col-xs-10">
         <%= yield %>
       </div>

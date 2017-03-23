@@ -73,6 +73,11 @@ body.dashboard {
     }
   }
 }
+body.dashboard.index, body.events.show {
+  li.events-menu-item {
+    a { background-color: $light-bg; }
+  }
+}
 
 .content {
   position: absolute;

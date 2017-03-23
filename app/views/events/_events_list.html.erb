@@ -12,6 +12,7 @@
     <tbody>
       <% event_instances.each do |ei| %>
         <tr>
+          <td><%= link_to ei.event.name, event_path(ei) %></td>
           <td><%= ei.event.name %></td>
           <td>
             <%= ei.event.recurrent == 0 ? "No" : "#{ei.event.recurrent} times" %>

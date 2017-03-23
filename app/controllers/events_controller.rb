@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
+  layout 'dashboard'
   include EventsConcern
+
+  def show
+    @event = Event.find(params[:id])
+  end
 
   def new
     @event = current_user.events.build

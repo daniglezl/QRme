@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320220653) do
+ActiveRecord::Schema.define(version: 20170323231057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_instance_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["event_instance_id"], name: "index_attendances_on_event_instance_id", using: :btree
+    t.index ["user_id"], name: "index_attendances_on_user_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "forum_thread_id"
+    t.integer  "parent_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["forum_thread_id"], name: "index_comments_on_forum_thread_id", using: :btree
+    t.index ["parent_id"], name: "index_comments_on_parent_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "event_instances", force: :cascade do |t|
     t.integer  "event_id"
@@ -31,6 +52,25 @@ ActiveRecord::Schema.define(version: 20170320220653) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+  end
+
+  create_table "forum_threads", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_forum_threads_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_forum_threads_on_user_id", using: :btree
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_invitations_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_invitations_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +92,14 @@ ActiveRecord::Schema.define(version: 20170320220653) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "attendances", "event_instances"
+  add_foreign_key "attendances", "users"
+  add_foreign_key "comments", "forum_threads"
+  add_foreign_key "comments", "users"
   add_foreign_key "event_instances", "events"
   add_foreign_key "events", "users"
+  add_foreign_key "forum_threads", "events"
+  add_foreign_key "forum_threads", "users"
+  add_foreign_key "invitations", "events"
+  add_foreign_key "invitations", "users"
 end

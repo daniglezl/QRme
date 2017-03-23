@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :event_instances
+  has_many :event_instances, dependent: :destroy
+  has_many :invitations, dependent: :destroy
   accepts_nested_attributes_for :event_instances
 
   def self.RECURRENT_DAYS

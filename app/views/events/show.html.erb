@@ -7,32 +7,23 @@
 <div class="container event-container">
   <div class="row">
     <div class="col-sm-4">
-      <div class="panel panel-default forums-card">
+      <div class="panel panel-default forums-card event-card">
         <div class="panel-heading">
-          <h3 class="panel-title">Forums</h3>
+          <h3 class="panel-title">
+            Forums
+            <%= link_to new_forum_thread_path(event_id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>
+            <% end %>
+          </h3>
         </div>
         <div class="panel-body">
-          Forums
-        </div>
-        <div>
-          <%= link_to new_forum_thread_path,
-  class: "btn btn-success active btn-lg", remote: true do %>
-   <%= fa_icon "plus" %> New Forum
-    <% end %>
-          <table>
-             <% @event.forum_threads.each do |ft| %>
-        <tr>
-          <td><%= link_to ft.title, forum_thread_path(ft) %></td>
-          
-        </tr>
-      <% end %>
-          </table>
-         
+          <%= render 'shared/forum_threads_list' %>
         </div>
       </div>
     </div>
     <div class="col-sm-4">
-      <div class="panel panel-default attachments-card">
+      <div class="panel panel-default attachments-card event-card">
         <div class="panel-heading">
           <h3 class="panel-title">Attachments</h3>
         </div>
@@ -42,7 +33,7 @@
       </div>
     </div>
     <div class="col-sm-4">
-      <div class="panel panel-default polls-card">
+      <div class="panel panel-default polls-card even-card">
         <div class="panel-heading">
           <h3 class="panel-title">
             Polls

@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_many :event_instances, dependent: :destroy
   has_many :invitations, dependent: :destroy
   has_many :polls, dependent: :destroy
+  has_many :forum_threads, dependent: :destroy
   accepts_nested_attributes_for :event_instances
 
   def self.RECURRENT_DAYS

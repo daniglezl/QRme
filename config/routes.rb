@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   resources :events
   resources :event_instances, only: :destroy
   resources :polls
-
+  resources :forum_threads
 end

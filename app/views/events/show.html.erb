@@ -6,7 +6,68 @@
   
  
 </div>
+<div class="container event-container">
+<div class="row">
+   <div class="col-sm-12">
+      <div class="panel panel-default polls-card">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Event Instances
+            <%= link_to new_poll_path(event_id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>
+            <% end %>
+          </h3>
+        </div>
+        <div class="panel-body">
+           <table class="table">
+      <tr>
+        <th>Date</th>
+        <th>Location</th>
+        <th># of Attendees</th>
+        <th>Mark Attendance</th>
+        <th></th>
+      </tr>
+       <% @event.event_instances.each do |ei| %>
+           <tr>
+             <td>
+               <%= ei.date %>
+             </td>
+             <td>
+                <%= ei.location %>
+             </td>
+             <td>
+                <%= ei.attendances.count %>
+             </td>
+             <td>
+                <%= link_to  edit_attendance_path(id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>  <% end %>
+             </td>
+              <td>
+                <%= link_to edit_event_instance_path(id: ei.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "pencil" %>  <% end %>
+             </td>
+             
+             
+            
+           
+          <% end %>
+    </table>
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+</div>
 
+</div>
 <div class="container event-container">
   <div class="row">
     <div class="col-sm-4">
@@ -61,57 +122,7 @@
         </div>
       </div>
     </div>
-  </div>
-  
-</div>
-<div class="container event-container">
-<div class="row">
-   <div class="col-sm-4">
-      <div class="panel panel-default polls-card">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            Event Instances
-            <%= link_to new_poll_path(event_id: @event.id), class: "new-instance-button",
-            remote: true do %>
-              <%= fa_icon "plus" %>
-            <% end %>
-          </h3>
-        </div>
-        <div class="panel-body">
-           <table>
-      <tr>
-        <th>Date</th>
-        <th>Location</th>
-        <th># of Attendees</th>
-        <th>Mark Attendance</th>
-      </tr>
-       <% @event.event_instances.each do |ei| %>
-           <tr>
-             <td>
-               <%= ei.date %>
-             </td>
-             <td>
-                <%= ei.location %>
-             </td>
-             <td>
-                <%= ei.attendances.count %>
-             </td>
-             <td>
-                <%= link_to  edit_attendance_path(ferid: @event.id), class: "new-instance-button",
-            remote: true do %>
-              <%= fa_icon "plus" %>  <% end %>
-             </td>
-            
-           
-          <% end %>
-    </table>
-          
-          
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-sm-4">
+    <div class="col-sm-12">
       <div class="panel panel-default polls-card">
         <div class="panel-heading">
           <h3 class="panel-title">
@@ -120,6 +131,7 @@
           </h3>
         </div>
         <div class="panel-body">
+           
            <a href="#">Invite Users</a><br/>
             <a href="#">Uninvite users</a><br/>
             
@@ -134,10 +146,8 @@
         </div>
       </div>
     </div>
-    
-    
-    
+  </div>
+  
 </div>
 
-</div>
 

@@ -1,0 +1,18 @@
+<div class="header">
+  <h2><%= params[:action] == "new" ? "New" %> New Attachment</h2>
+</div>
+
+<%= form_for @attachment, remote: true do |f| %>
+
+  <%= hidden_field_tag :event_id, @attachment.event_id %>
+  
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary btn-lg" %>
+  </div>
+
+<% end %>

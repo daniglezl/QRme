@@ -1,2 +1,2 @@
-qrModal.open("<%= j render 'new_form' %>")
+qrModal.open("<%= j render 'form' %>", "new-edit-event")
 $("#attachment_name").focus()

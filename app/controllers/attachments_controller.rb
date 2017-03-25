@@ -1,8 +1,8 @@
 class AttachmentsController < ApplicationController
     
     def new
-        event = Event.find(params[:event_id])
-        @attachment = event.attachments.build
+        @event = Event.find(params[:event_id])
+        @attachment = @event.attachments.build
     end
     
     def create

@@ -26,7 +26,7 @@
         <th>Location</th>
         <th># of Attendees</th>
         <th>Mark Attendance</th>
-        <th></th>
+        <th>Actions</th>
       </tr>
        <% @event.event_instances.each do |ei| %>
            <tr>
@@ -47,7 +47,13 @@
               <td>
                 <%= link_to edit_event_instance_path(id: ei.id), class: "new-instance-button",
             remote: true do %>
-              <%= fa_icon "pencil" %>  <% end %>
+              <%= fa_icon "pencil" %> <% end %>
+              <%= link_to event_instance_path(ei), method: :delete,
+            data: { confirm: "Are you sure?",
+            message: "The event's information will be lost and cannot be recovered.",
+            }, remote: true, title: "Delete" do %>
+              <%= fa_icon "trash" %>
+              <% end %>
              </td>
              
              

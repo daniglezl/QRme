@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   resources :polls
   resources :forum_threads
   resources :attachments
+  resources :attendances
 end

@@ -10,4 +10,18 @@ class EventInstancesController < ApplicationController
     get_event_instances
   end
 
+  def edit
+    @event_instance = EventInstance.find(params[:id])
+  end
+ 
+
+  def update
+    @event_instance = EventInstance.find(params[:id])
+    @event_instance.update_attributes event_instance_params
+    
+  end
+  
+   def event_instance_params
+    params.require(:event_instance).permit(:date, :location)
+  end
 end

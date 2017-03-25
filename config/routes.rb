@@ -19,10 +19,16 @@ Rails.application.routes.draw do
 
   get :dashboard, to: 'dashboard#index', as: :dashboard_index
 
-  resources :events
+  resources :events do
+    member do
+      get :invite_user_form
+      post :invite_user
+    end
+  end
   resources :event_instances
   resources :polls
   resources :forum_threads
+  resources :comments
   resources :attachments
   resources :attendances
 end

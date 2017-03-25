@@ -4,7 +4,10 @@
   <h5><i><%= @event.user.username %></i></h5>
   <h5>Number of Invitees <%= @event.invitations.count %></h5>
   
- 
+  <%= link_to invite_user_form_event_path, class: "invite-user-button",
+    title: "Invite User", remote: true do %>
+    <%= fa_icon "user-plus" %>
+  <% end %>
 </div>
 <div class="container event-container">
 <div class="row">
@@ -68,9 +71,7 @@
     </div>
     
     
-    
-    
-    
+
 </div>
 
 </div>

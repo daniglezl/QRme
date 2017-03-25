@@ -25,8 +25,10 @@ Rails.application.routes.draw do
       post :invite_user
     end
   end
-  resources :event_instances, only: :destroy
+  resources :event_instances
   resources :polls
   resources :forum_threads
   resources :comments
+  resources :attachments
+  resources :attendances
 end

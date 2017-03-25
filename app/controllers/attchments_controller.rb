@@ -1,0 +1,2 @@
+class AttchmentsController < ApplicationController
+end

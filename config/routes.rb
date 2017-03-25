@@ -21,5 +21,6 @@ Rails.application.routes.draw do
 
   resources :events
   resources :event_instances, only: :destroy
+  resources :forum_threads
 
 end

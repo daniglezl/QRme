@@ -1,0 +1,15 @@
+<%= form_for @comment, remote: true do |f| %>
+
+  <%= f.hidden_field :parent_id %>
+  <%= hidden_field_tag :forum_thread_id, @forum_thread.id %>
+
+  <div class="form-group">
+    <%= f.label :body, "Comment" %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Comment", class: "btn btn-primary btn-sm" %>
+  </div>
+
+<% end %>

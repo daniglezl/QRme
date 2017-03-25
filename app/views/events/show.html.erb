@@ -2,6 +2,9 @@
   <h2><%= @event.name %></h2>
   <h5>Event Admin:</h5>
   <h5><i><%= @event.user.username %></i></h5>
+  <h5>Number of Invitees</h5>
+  <h5><i><%= @event.invitations.count %></i></h5>
+ 
 </div>
 
 <div class="container event-container">
@@ -9,16 +12,16 @@
     <div class="col-sm-4">
       <div class="panel panel-default forums-card">
         <div class="panel-heading">
-          <h3 class="panel-title">Forums</h3>
+          <h3 class="panel-title">Forums <%= link_to new_forum_thread_path(event_id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>
+            <% end %></h3>
         </div>
         <div class="panel-body">
-          Forums
+          Forums 
         </div>
         <div>
-          <%= link_to new_forum_thread_path,
-  class: "btn btn-success active btn-lg", remote: true do %>
-   <%= fa_icon "plus" %> New Forum
-    <% end %>
+          
           <table>
              <% @event.forum_threads.each do |ft| %>
         <tr>
@@ -34,7 +37,10 @@
     <div class="col-sm-4">
       <div class="panel panel-default attachments-card">
         <div class="panel-heading">
-          <h3 class="panel-title">Attachments</h3>
+          <h3 class="panel-title">Attachments<%= link_to new_attachment_path(event_id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>
+            <% end %></h3>
         </div>
         <div class="panel-body">
           Attachments
@@ -61,4 +67,48 @@
       </div>
     </div>
   </div>
+  
 </div>
+<div class="row">
+   <div class="col-sm-4">
+      <div class="panel panel-default polls-card">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Event Instances
+            <%= link_to new_poll_path(event_id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>
+            <% end %>
+          </h3>
+        </div>
+        <div class="panel-body">
+           <table>
+      <tr>
+        <th>Date</th>
+        <th>Location</th>
+        <th># of Attendees</th>
+      </tr>
+       <% @event.event_instances.each do |ei| %>
+           <tr>
+             <td>
+               <%= ei.date %>
+             </td>
+             <td>
+                <%= ei.location %>
+             </td>
+             <td>
+                <%= ei.attendances.count %>
+             </td>
+           
+          <% end %>
+    </table>
+          
+          
+        </div>
+      </div>
+    </div>
+</div>
+<div class="col-sm-6">
+   
+   
+  </div>

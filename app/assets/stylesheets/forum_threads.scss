@@ -1,3 +1,19 @@
-// Place all the styles related to the forum_threads controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body.forum_threads.show {
+  .content {
+    padding-top: 150px;
+  }
+}
+
+.forum-info {
+  background-image: linear-gradient(45deg, $primary, $seconday);
+  color: $white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 15px 0;
+  text-align: center;
+  height: 135px;
+  h2 { margin-bottom: 20px; }
+  h5 { margin: 0; }
+}

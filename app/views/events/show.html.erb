@@ -2,6 +2,10 @@
   <h2><%= @event.name %></h2>
   <h5>Event Admin:</h5>
   <h5><i><%= @event.user.username %></i></h5>
+  <%= link_to invite_user_form_event_path, class: "invite-user-button",
+    title: "Invite User", remote: true do %>
+    <%= fa_icon "user-plus" %>
+  <% end %>
 </div>
 
 <div class="container event-container">

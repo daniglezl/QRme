@@ -199,3 +199,11 @@ body {
     }
   }
 }
+
+.panel-title {
+  position: relative;
+  .new-instance-button {
+    position: absolute;
+    right: 0;
+  }
+}

@@ -1,27 +1,27 @@
--<div class="forum-info">
- -  <h2><%= @forum_thread.title %></h2>
- -  <h5>Created by:</h5>
- -  <h5><i><%= @forum_thread.user.username %></i></h5>
- -</div>
- -
- -<div class="container forum-container">
- -  <h2 class="heading-center">Comments</h2>
- -
- -  <div class="comments-container">
- -    <div class="comments-list">
- -      <%= render_comments @forum_thread.comments.arrange(order: :created_at) %>
- -    </div>
- -    <div class="well well-sm">
- -      <%= form_tag comments_path(forum_thread_id: params[:id]), method: :post, remote: true do %>
- -        <div class="form-group">
- -          <%= label_tag "new_parent_comment", "New comment" %>
- -          <%= text_area_tag "comment[body]", "", class: "form-control", id: "new_parent_comment" %>
- -        </div>
- -
- -        <div class="actions">
- -          <%= submit_tag "Comment", class: "btn btn-primary btn-sm" %>
- -        </div>
- -      <% end %>
- -    </div>
- -  </div>
- -</div>
+<div class="forum-info">
+   <h2><%= @forum_thread.title %></h2>
+   <h5>Created by:</h5>
+   <h5><i><%= @forum_thread.user.username %></i></h5>
+ </div>
+ 
+ <div class="container forum-container">
+   <h2 class="heading-center">Comments</h2>
+ 
+   <div class="comments-container">
+     <div class="comments-list">
+       <%= render_comments @forum_thread.comments.arrange(order: :created_at) %>
+     </div>
+     <div class="well well-sm">
+       <%= form_tag comments_path(forum_thread_id: params[:id]), method: :post, remote: true do %>
+         <div class="form-group">
+           <%= label_tag "new_parent_comment", "New comment" %>
+           <%= text_area_tag "comment[body]", "", class: "form-control", id: "new_parent_comment" %>
+         </div>
+ 
+         <div class="actions">
+           <%= submit_tag "Comment", class: "btn btn-primary btn-sm" %>
+         </div>
+       <% end %>
+     </div>
+   </div>
+ </div>

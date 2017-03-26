@@ -6,15 +6,15 @@ Rails.application.routes.draw do
 
   as :user do
     # sessions
-    get 'login', to: 'devise/sessions#new', as: :new_user_session
-    post 'login', to: 'devise/sessions#create', as: :user_session
-    delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+    get     'login',  to: 'devise/sessions#new',      as: :new_user_session
+    post    'login',  to: 'devise/sessions#create',   as: :user_session
+    delete  'logout', to: 'devise/sessions#destroy',  as: :destroy_user_session
 
     #registrations
-    get 'users/cancel', to: 'devise/registrations#cancel', as: :cancel_user_registration
-    get :signup, to: 'devise/registrations#new', as: :new_user_registration
-    get :profile, to: 'devise/registrations#edit', as: :edit_user_registration
-    patch :profile, to: 'devise_custom/registrations#update', as: :update_user_registration
+    get   'users/cancel', to: 'devise/registrations#cancel',        as: :cancel_user_registration
+    get   :signup,        to: 'devise/registrations#new',           as: :new_user_registration
+    get   :profile,       to: 'devise/registrations#edit',          as: :edit_user_registration
+    patch :profile,       to: 'devise_custom/registrations#update', as: :update_user_registration
   end
   devise_for :users, skip: [:sessions], controllers: { registrations: 'devise_custom/registrations' }
 
@@ -22,14 +22,14 @@ Rails.application.routes.draw do
 
   resources :events do
     member do
-      get :invite_user_form
-      post :invite_user
+      get   :invite_user_form
+      post  :invite_user
     end
   end
   resources :event_instances
   resources :polls
   resources :forum_threads
-  resources :comments
   resources :attachments
+  resources :comments
   resources :attendances
 end

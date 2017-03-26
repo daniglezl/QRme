@@ -31,6 +31,7 @@ gem 'rails_admin', '~> 1.0'
 gem 'gravtastic'
 gem "font-awesome-rails"
 gem 'ancestry'
+gem 'knock', git: 'git://github.com/daniglezl/knock.git', branch: 'config_getter_name'
 
 group :development, :test do
   gem 'byebug', platform: :mri

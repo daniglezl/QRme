@@ -2,19 +2,43 @@
   <h2>Poll: <%= @poll.name %></h2>
 </div>
 
-  <div class="col-sm-4">
-      <div class="panel panel-default polls-card even-card">
+<h2>Results</h2>
+
+<div class="container event-container">
+<div class="row">
+   <div class="col-sm-9">
+      <div class="panel panel-default polls-card">
         <div class="panel-heading">
           <h3 class="panel-title">
-            Poll Answers
-            <%= link_to new_poll_answer_path(poll_id: @poll.id), class: "new-instance-button",
+            Polls Answers
+            <%= link_to vote_poll_path(poll_id: @poll.id), class: "new-instance-button",
             remote: true do %>
               <%= fa_icon "plus" %>
             <% end %>
           </h3>
         </div>
         <div class="panel-body">
-          <%= render 'shared/poll_answers_list' %>
+           <table class="table">
+      <tr>
+        <th>Poll Answer</th>
+        <th>Vote Count</th>
+      </tr>
+       <% @poll.poll_answers.each do |ei| %>
+           <tr>
+             <td>
+               <%= ei.title %>
+             </td>
+             <td>
+                <%= ei.voteCount %>
+             </td>
+          <% end %>
+    </table>
+          
+          
         </div>
       </div>
     </div>
+    
+    
+
+</div>

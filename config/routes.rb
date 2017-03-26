@@ -27,9 +27,14 @@ Rails.application.routes.draw do
     end
   end
   resources :event_instances
-  resources :polls
+  resources :polls do 
+    member do
+      get :vote
+    end
+  end
   resources :forum_threads
   resources :comments
   resources :attachments
   resources :attendances
+
 end

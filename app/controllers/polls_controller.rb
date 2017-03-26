@@ -17,6 +17,10 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find(params[:id])
   end
+  
+  def vote
+    @poll = Poll.find(params[:id])
+  end
 
   def edit
     @poll = Poll.find(params[:id])

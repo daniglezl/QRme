@@ -3,7 +3,9 @@
 </div>
 
 <%= form_for @event, remote: true do |f| %>
-
+<div class="errors-container">
+  <%= render 'shared/form_errors', object: @event %>
+</div>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>

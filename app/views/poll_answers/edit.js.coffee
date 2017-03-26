@@ -1,2 +1,2 @@
-qrModal.open("<%= j render 'new_edit_form' %>")
-$("#poll_name").focus()
+toastr.success("The poll answer was successfully recored", "Poll answer recorded")
+vex.closeAll()

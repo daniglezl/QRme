@@ -20,6 +20,12 @@ class PollAnswersController < ApplicationController
 
   # GET /poll_answers/1/edit
   def edit
+    poll_answer = PollAnswer.find(params[:id])
+    @poll_answer = PollAnswer.find(params[:id])
+    votes = poll_answer.voteCount + 1
+    @poll_answer.update_attribute(:voteCount, votes )
+    poll_id = poll_answer.poll_id
+    @poll = Poll.find(poll_id)
   end
 
   # POST /poll_answers
@@ -27,6 +33,7 @@ class PollAnswersController < ApplicationController
   def create
     poll = Poll.find(params[:poll_id])
     @poll_answer = poll.poll_answers.build poll_answer_params
+    @poll_answer.update_attribute(:voteCount, 0 )
     @poll_answer.save
     @poll = Poll.find(params[:poll_id])
   end
@@ -34,15 +41,9 @@ class PollAnswersController < ApplicationController
   # PATCH/PUT /poll_answers/1
   # PATCH/PUT /poll_answers/1.json
   def update
-    respond_to do |format|
-      if @poll_answer.update(poll_answer_params)
-        format.html { redirect_to @poll_answer, notice: 'Poll answer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @poll_answer }
-      else
-        format.html { render :edit }
-        format.json { render json: @poll_answer.errors, status: :unprocessable_entity }
-      end
-    end
+    @poll_answer = Poll.find(params[:id])
+    @poll_answer.update_attributes(poll_answer_params)
+    @poll = @poll_answer.poll
   end
 
   # DELETE /poll_answers/1

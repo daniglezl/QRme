@@ -107,14 +107,12 @@
             <% end %>
           </h3>
         </div>
-        <div class="panel-body">
           <div class="panel-body">
           <% @event.attachments.each do |a| %>
             <span><%= a.name %></span>
             <span><%= link_to "Delete", delete_attachment_path(id: a.attachment_id) %></span>
           <% end %>
-        </div>
-        </div>
+          </div>
       </div>
     </div>
     <div class="col-sm-4">

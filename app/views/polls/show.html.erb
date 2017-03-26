@@ -1,1 +1,20 @@
-Poll stuff for <%= @poll.name %>
+<div class="forum-info">
+  <h2>Poll: <%= @poll.name %></h2>
+</div>
+
+  <div class="col-sm-4">
+      <div class="panel panel-default polls-card even-card">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Poll Answers
+            <%= link_to new_poll_answer_path(poll_id: @poll.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>
+            <% end %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%= render 'shared/poll_answers_list' %>
+        </div>
+      </div>
+    </div>

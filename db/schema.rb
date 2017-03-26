@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325210723) do
+ActiveRecord::Schema.define(version: 20170326010751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,24 @@ ActiveRecord::Schema.define(version: 20170325210723) do
     t.index ["user_id"], name: "index_invitations_on_user_id", using: :btree
   end
 
+  create_table "poll_answers", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.string   "title"
+    t.integer  "voteCount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_poll_answers_on_poll_id", using: :btree
+  end
+
+  create_table "poll_question_answers", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.string   "title"
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_poll_question_answers_on_poll_id", using: :btree
+  end
+
   create_table "polls", force: :cascade do |t|
     t.integer  "event_id"
     t.string   "name"
@@ -110,5 +128,7 @@ ActiveRecord::Schema.define(version: 20170325210723) do
   add_foreign_key "forum_threads", "users"
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "users"
+  add_foreign_key "poll_answers", "polls"
+  add_foreign_key "poll_question_answers", "polls"
   add_foreign_key "polls", "events"
 end

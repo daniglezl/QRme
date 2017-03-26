@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :poll_answers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: 'statics#home'

@@ -1,0 +1,60 @@
+<div class="header">
+  <h2>QR Code</h2>
+</div>
+
+<div id="toprint">
+    
+    <div class="row text-center">
+        
+        <div class="form-group">
+            <h3>Event:  <%= @event_instance.event.name %></h3>
+        </div>
+        <div class="form-group">
+            <h3>Date:  <%= @event_instance.date.strftime "%b %e, %Y @ %l:%M %P"  %></h3>
+        </div>
+        <div class="form-group">
+            <h3>Location:  <%= @event_instance.location  %></h3>
+        </div>
+    </div>
+  
+   
+    <div class="row" style="padding:5px">
+        
+            <div class="thumbnail">
+                <img src="/assets/qrcode.png" />
+            </div>
+        
+        
+    </div>
+    <h4>Please scan qrcode using our app to mark yourself present to this event</h4>
+    
+     </div>
+     
+        <div class="actions">
+            <button onclick="PrintElem('toprint')"  class="btn btn-success">Print Code</button>
+       </div>
+   
+   
+<script>
+    function PrintElem(elem)
+{
+    var mywindow = window.open('', 'PRINT');
+    
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write("</head><body><div style='width:100%; text-align:center'");
+    mywindow.document.write('<h1>' + document.title  + '</h1>');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</div></body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+setTimeout(function() {
+    mywindow.print();
+    mywindow.close();
+}, 250);
+    
+
+    return true;
+}
+</script>

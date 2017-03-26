@@ -4,69 +4,24 @@
   <h5><i><%= @event.user.username %></i></h5>
   <h5>Number of Invitees <%= @event.invitations.count %></h5>
   
-  <%= link_to invite_user_form_event_path, class: "invite-user-button",
-    title: "Invite User", remote: true do %>
-    <%= fa_icon "user-plus" %>
-  <% end %>
+  
 </div>
 <div class="container event-container">
 <div class="row">
    <div class="col-sm-12">
-      <div class="panel panel-default polls-card">
+      <div class="panel panel-default events_instances-card">
         <div class="panel-heading">
           <h3 class="panel-title">
             Event Instances
-            <%= link_to new_poll_path(event_id: @event.id), class: "new-instance-button",
+            <%= link_to new_event_instance_path(id: @event.id), class: "new-instance-button",
             remote: true do %>
               <%= fa_icon "plus" %>
             <% end %>
           </h3>
         </div>
         <div class="panel-body">
-           <table class="table">
-      <tr>
-        <th>Date</th>
-        <th>Location</th>
-        <th># of Attendees</th>
-        <th>Mark Attendance</th>
-        <th>Actions</th>
-      </tr>
-       <% @event.event_instances.each do |ei| %>
-           <tr>
-             <td>
-               <%= ei.date %>
-             </td>
-             <td>
-                <%= ei.location %>
-             </td>
-             <td>
-                <%= ei.attendances.count %>
-             </td>
-             <td>
-                <%= link_to  edit_attendance_path(id: @event.id), class: "new-instance-button",
-            remote: true do %>
-              <%= fa_icon "plus" %>  <% end %>
-             </td>
-              <td>
-                <%= link_to edit_event_instance_path(id: ei.id), class: "new-instance-button",
-            remote: true do %>
-              <%= fa_icon "pencil" %> <% end %>
-              <%= link_to event_instance_path(ei), method: :delete,
-            data: { confirm: "Are you sure?",
-            message: "The event's information will be lost and cannot be recovered.",
-            }, remote: true, title: "Delete" do %>
-              <%= fa_icon "trash" %>
-              <% end %>
-             </td>
-             
-             
-            
-           
-          <% end %>
-    </table>
-          
-          
-        </div>
+          <%= render 'shared/events_instances_list' %>
+          </div>
       </div>
     </div>
     
@@ -144,7 +99,10 @@
         </div>
         <div class="panel-body">
            
-           <a href="#">Invite Users</a><br/>
+           <%= link_to invite_user_form_event_path, class: "invite-user-button",
+    title: "Invite User", remote: true do %>
+    Invite Users
+  <% end %><br/>
             <a href="#">Uninvite users</a><br/>
             
             <a href="#">Print QR Code</a><br/>

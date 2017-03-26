@@ -32,4 +32,7 @@ Rails.application.routes.draw do
   resources :attachments
   resources :comments
   resources :attendances
+  
+  get '/event_instances/qrcode/:id', to: 'event_instances#qrcode', as: 'qrcode_event_instance'
+  
 end

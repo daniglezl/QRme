@@ -6,7 +6,8 @@ class Event < ApplicationRecord
   has_many :forum_threads, dependent: :destroy
   has_many :attachments, dependent: :destroy
   accepts_nested_attributes_for :event_instances
-
+  validates :name, presence: true
+  
   def self.RECURRENT_DAYS
     {
       "No recurrent": 0,

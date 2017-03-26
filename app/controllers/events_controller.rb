@@ -2,7 +2,17 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
   layout 'dashboard'
   include EventsConcern
+  
+  
+  def invite_event
+   @event = Event.find(params[:id])
+  end
 
+  def uninvite_event
+   @event = Event.find(params[:id])
+   @invitation = @event.invitations
+  end
+  
   def show
     @event = Event.find(params[:id])
   end

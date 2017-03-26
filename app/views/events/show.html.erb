@@ -1,8 +1,23 @@
+<div class= "container">
+ <%= link_to events_uninvite_event_path(id: @event.id),
+  class: "btn btn-primary active btn-lg", remote: true do %>
+  <%= fa_icon "minus" %> Uninvite users
+<% end %>
+
+</div>
+<br>
+
+
 <div class="event-info">
   <h2><%= @event.name %></h2>
   <h5>Event Admin:</h5>
   <h5><i><%= @event.user.username %></i></h5>
-</div>
+
+ <%= link_to events_invite_event_path(id: @event.id),
+  class: "invite-user-button", title: "Invite User", remote: true do %>
+  <%= fa_icon "user-plus" %>
+  <% end %>
+  </div>
 
 <div class="container event-container">
   <div class="row">

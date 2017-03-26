@@ -1,0 +1,26 @@
+<div class="main-table-container">
+    <h2> Univite User </h2>
+  <table class="main-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Uninvite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @invitation.each do |inv| %>
+            <tr>
+              <td><%= inv.user.username %></td>
+              <td>
+                <%= link_to event_instance_path(inv), method: :delete,
+                data: { confirm: "Are you sure?",
+                message: "The event's information will be lost and cannot be recovered.",
+                }, remote: true, title: "Delete" do %>
+                  <%= fa_icon "trash" %>
+          <% end %>    
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>

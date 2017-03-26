@@ -1,6 +1,6 @@
 class CreateAttachments < ActiveRecord::Migration[5.0]
   def change
-    create_table :attachments do |t|
+    create_table :attachment do |t|
       t.string :name
       t.references :event, foreign_key: true
 

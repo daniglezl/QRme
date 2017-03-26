@@ -24,6 +24,7 @@ class EventInstancesController < ApplicationController
   def update
     @event_instance = EventInstance.find(params[:id])
     @event_instance.update_attributes event_instance_params
+    @event = @event_instance.event
   end
   
   def destroy
@@ -32,6 +33,10 @@ class EventInstancesController < ApplicationController
     @event_instance.destroy
     @event.destroy if @event.event_instances.count < 1
     get_event_instances
+  end
+  
+  def qrcode
+    @event_instance = EventInstance.find(params[:id])
   end
   
   def event_instance_params

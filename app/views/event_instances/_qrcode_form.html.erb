@@ -1,0 +1,58 @@
+<div class="header">
+  <h2>QR Code</h2>
+</div>
+
+<div id="toprint">
+    <div class="row text-center">
+        
+        <div class="form-group">
+            <label>Event:  <%= @event_instance.event.name %></label>
+        </div>
+        <div class="form-group">
+            <label>Date:  <%= @event_instance.date.strftime "%b %e, %Y @ %l:%M %P"  %></label>
+        </div>
+        <div class="form-group">
+            <label>Location:  <%= @event_instance.location  %></label>
+        </div>
+    </div>
+  
+   
+    <div class="row" style="padding:5px">
+        
+            <div class="thumbnail">
+                <img src="/assets/qrcode.png" />
+            </div>
+        
+        
+    </div>
+    
+     </div>
+     
+        <div class="actions">
+            <button onclick="PrintElem('toprint')"  class="btn btn-success">Print Code</button>
+       </div>
+   
+   
+<script>
+    function PrintElem(elem)
+{
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write('<h1>' + document.title  + '</h1>');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+setTimeout(function() {
+    mywindow.print();
+    mywindow.close();
+}, 250);
+    
+
+    return true;
+}
+</script>

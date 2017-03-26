@@ -7,7 +7,6 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :event_instances
   validates :name, presence: true
   
-  
   def self.RECURRENT_DAYS
     {
       "No recurrent": 0,

@@ -39,6 +39,20 @@ class EventsController < ApplicationController
     get_event_instances
   end
 
+  def invite_user_form
+    @event = Event.find(params[:id])
+  end
+
+  def invite_user
+    @event = Event.find(params[:id])
+    @user = User.find_by(email: params[:user_email])
+    if @user.blank?
+      @event.errors.add(:base, "A user with the specified email was not found")
+    else
+      # logic to send invite email to user
+    end
+  end
+
   private
 
   def event_params

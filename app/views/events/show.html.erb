@@ -1,29 +1,91 @@
-<div class= "container">
- <%= link_to events_uninvite_event_path(id: @event.id),
-  class: "btn btn-primary active btn-lg", remote: true do %>
-  <%= fa_icon "minus" %> Uninvite users
-<% end %>
-
-</div>
-<br>
-
-
 <div class="event-info">
   <h2><%= @event.name %></h2>
   <h5>Event Admin:</h5>
   <h5><i><%= @event.user.username %></i></h5>
 
+
  <%= link_to events_invite_event_path(id: @event.id),
   class: "invite-user-button", title: "Invite User", remote: true do %>
   <%= fa_icon "user-plus" %>
   <% end %>
-  </div>
 
+  <h5>Number of Invitees <%= @event.invitations.count %></h5>
+  
+</div>
+<div class="container event-container">
+<div class="row">
+   <div class="col-sm-12">
+      <div class="panel panel-default polls-card">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Event Instances
+            <%= link_to new_poll_path(event_id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>
+            <% end %>
+          </h3>
+        </div>
+        <div class="panel-body">
+           <table class="table">
+      <tr>
+        <th>Date</th>
+        <th>Location</th>
+        <th># of Attendees</th>
+        <th>Mark Attendance</th>
+        <th>Actions</th>
+      </tr>
+       <% @event.event_instances.each do |ei| %>
+           <tr>
+             <td>
+               <%= ei.date %>
+             </td>
+             <td>
+                <%= ei.location %>
+             </td>
+             <td>
+                <%= ei.attendances.count %>
+             </td>
+             <td>
+                <%= link_to  edit_attendance_path(id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>  <% end %>
+             </td>
+              <td>
+                <%= link_to edit_event_instance_path(id: ei.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "pencil" %> <% end %>
+              <%= link_to event_instance_path(ei), method: :delete,
+            data: { confirm: "Are you sure?",
+            message: "The event's information will be lost and cannot be recovered.",
+            }, remote: true, title: "Delete" do %>
+              <%= fa_icon "trash" %>
+              <% end %>
+             </td>
+             
+             
+            
+           
+          <% end %>
+    </table>
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    
+
+</div>
+
+</div>
 <div class="container event-container">
   <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-default forums-card event-card">
         <div class="panel-heading">
+
+        
+
           <h3 class="panel-title">
             Forums
             <%= link_to new_forum_thread_path(event_id: @event.id), class: "new-instance-button",
@@ -34,13 +96,17 @@
         </div>
         <div class="panel-body">
           <%= render 'shared/forum_threads_list' %>
+
         </div>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="panel panel-default attachments-card event-card">
         <div class="panel-heading">
-          <h3 class="panel-title">Attachments</h3>
+          <h3 class="panel-title">Attachments<%= link_to new_attachment_path(event_id: @event.id), class: "new-instance-button",
+            remote: true do %>
+              <%= fa_icon "plus" %>
+            <% end %></h3>
         </div>
         <div class="panel-body">
           Attachments
@@ -63,6 +129,37 @@
             <span><%= p.name %></span>
             <span><%= link_to "Edit", edit_poll_path(p) %></span>
           <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="panel panel-default polls-card">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Other Options
+           
+          </h3>
+        </div>
+        <div class="panel-body">
+            <div>
+              <%= link_to events_invite_event_path(id: @event.id), remote: true do %>
+              Invite User
+              <% end %>
+            </div>
+            <div>
+              <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
+              Uninvite users
+              <% end %>
+            </div>
+            
+            <a href="#">Print QR Code</a><br/>
+            <a href="#" onclick="confirm('Are you sure you want to delete this event')">Delete event</a>
+        
+       
+      
+   
+          
+          
         </div>
       </div>
     </div>

@@ -8,9 +8,11 @@ class ForumThreadsController < ApplicationController
   end
 
   def create
-    @event = Event.find(params[:event_id])
+    event = Event.find(params[:event_id])
     @forum_thread = event.forum_threads.build forum_thread_params
     @forum_thread.save
+    @forum_thread.update_attribute(:user_id, current_user.id)
+    @event = Event.find(params[:event_id])
   end
 
   def show

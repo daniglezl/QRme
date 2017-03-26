@@ -30,6 +30,7 @@ gem 'cancancan'
 gem 'rails_admin', '~> 1.0'
 gem 'gravtastic'
 gem "font-awesome-rails"
+gem 'ancestry'
 
 group :development, :test do
   gem 'byebug', platform: :mri

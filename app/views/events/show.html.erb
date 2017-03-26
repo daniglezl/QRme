@@ -58,14 +58,19 @@
     <div class="col-sm-4">
       <div class="panel panel-default attachments-card event-card">
         <div class="panel-heading">
-          <h3 class="panel-title">Attachments<%= link_to new_attachment_path(event_id: @event.id), class: "new-instance-button",
+          <h3 class="panel-title">Attachments
+            <%= link_to new_attachment_path(event_id: @event.id), class: "new-instance-button",
             remote: true do %>
               <%= fa_icon "plus" %>
-            <% end %></h3>
+            <% end %>
+          </h3>
         </div>
-        <div class="panel-body">
-          Attachments
-        </div>
+          <div class="panel-body">
+          <% @event.attachments.each do |a| %>
+            <span><%= a.name %></span>
+            <span><%= link_to "Delete", delete_attachment_path(id: a.attachment_id) %></span>
+          <% end %>
+          </div>
       </div>
     </div>
     <div class="col-sm-4">

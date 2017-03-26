@@ -30,6 +30,5 @@ Rails.application.routes.draw do
   resources :forum_threads
   resources :attachments
   resources :comments
-  resources :attachments
   resources :attendances
 end

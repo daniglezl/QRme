@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170325210723) do
   enable_extension "plpgsql"
 
   create_table "attachments", force: :cascade do |t|
-    t.integer  "event_id"
     t.string   "name"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attachments_on_event_id", using: :btree

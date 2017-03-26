@@ -8,6 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :timeoutable
 
+  alias_method :authenticate, :valid_password?
+  
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   has_many :events, dependent: :destroy
@@ -29,5 +31,9 @@ class User < ApplicationRecord
     ROLES.reject do |r|
       ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
     end
+  end
+
+  def self.from_token_payload payload
+    self.find payload["sub"]
   end
 end

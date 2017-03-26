@@ -1,22 +1,22 @@
 <div class="header">
-  <h2>Edit Event Instance</h2>
+  <h2>New Event Instance</h2>
 </div>
 
 <%= form_for @event_instance, remote: true do |f| %>
 <div class="errors-container">
   <%= render 'shared/form_errors', object: @event_instance %>
 </div>
+<%= hidden_field_tag :event_id, @event_instance.event_id %>
   <div class="form-group">
     <%= f.label :date %>
-    <%= f.date_field :date, class: "form-control" %>
+    <%= f.datetime_select :date, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :location, "Location" %>
+    <%= f.label :location %>
     <%= f.text_field :location, class: "form-control" %>
   </div>
 
-  
   
 
   <div class="actions">

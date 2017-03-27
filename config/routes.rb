@@ -20,6 +20,13 @@ Rails.application.routes.draw do
 
   get :dashboard, to: 'dashboard#index', as: :dashboard_index
 
+
+  get '/events/invite_event' , to: 'events#invite_event'
+  get '/events/uninvite_event' , to: 'events#uninvite_event'
+   
+  resources :events
+  resources :event_instances, only: :destroy
+
   resources :events do
     member do
       get   :invite_user_form

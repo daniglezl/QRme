@@ -1,0 +1,23 @@
+<div class="header">
+  <h2>Invite User to: </h2>
+</div>
+
+<div align="center" class= "event_info">
+    <h4> <%= @event.name %> </h4>
+</div>
+
+<%= form_tag events_invite_event_path(id: @event.id), remote: true do %>
+<div class="errors-container">
+  <%= render 'shared/form_errors', object: @event %>
+</div>
+
+  <div class="form-group">
+    <%= label_tag :user_email %>
+    <%= email_field_tag :user_email, "", class: "form-control" %>
+  </div>
+  
+  <div class= "actions">
+      <button type="button" class="btn btn-primary"> <%= fa_icon "plus" %> Invite more </button>
+      <button type="button" class="btn btn-primary">Done</button>
+  </div>
+<% end %>

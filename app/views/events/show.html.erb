@@ -2,9 +2,16 @@
   <h2><%= @event.name %></h2>
   <h5>Event Admin:</h5>
   <h5><i><%= @event.user.username %></i></h5>
+
+
+ <%= link_to events_invite_event_path(id: @event.id),
+  class: "invite-user-button", title: "Invite User", remote: true do %>
+  <%= fa_icon "user-plus" %>
+  <% end %>
+
   <h5>Number of Invitees <%= @event.invitations.count %></h5>
   
-  
+
 </div>
 <div class="container event-container">
 <div class="row">
@@ -98,13 +105,16 @@
           </h3>
         </div>
         <div class="panel-body">
-           
-           <%= link_to invite_user_form_event_path, class: "invite-user-button",
-    title: "Invite User", remote: true do %>
-    Invite Users
-  <% end %><br/>
-            <a href="#">Uninvite users</a><br/>
-            
+            <div>
+              <%= link_to events_invite_event_path(id: @event.id), remote: true do %>
+              Invite User
+              <% end %>
+            </div>
+            <div>
+              <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
+              Uninvite users
+              <% end %>
+            </div>
             <a href="#">Print QR Code</a><br/>
             <a href="#" onclick="confirm('Are you sure you want to delete this event')">Delete event</a>
         
@@ -117,7 +127,4 @@
       </div>
     </div>
   </div>
-  
 </div>
-
-

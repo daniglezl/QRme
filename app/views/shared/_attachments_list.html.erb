@@ -1,0 +1,23 @@
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    <% @event.attachments.each do |a| %>
+        <tr class="name">
+            <td>
+                <%= link_to a.name, attachment_path(a) %>
+            </td>
+            <td class="actions", align="right">
+                <%= link_to attachment_path(a), method: :download,
+                 remote: true do %>
+                <%= fa_icon "download" %> <% end %> |
+                <%= link_to attachment_path(a), method: :delete,
+                data: {confirm: "Are you sure?"
+                }, remote: true, title: "Delete" do %>
+                <%= fa_icon "trash" %> <% end %>
+                
+            </td>
+        </tr>
+    <% end %>
+</table>

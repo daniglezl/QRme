@@ -3,41 +3,35 @@
   <h5>Event Admin:</h5>
   <h5><i><%= @event.user.username %></i></h5>
   <h5>Number of Invitees <%= @event.invitations.count %></h5>
-  
-  
 </div>
+
 <div class="container event-container">
-<div class="row">
-   <div class="col-sm-12">
-      <div class="panel panel-default events_instances-card">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            Event Instances
-            <%= link_to new_event_instance_path(id: @event.id), class: "new-instance-button",
-            remote: true do %>
-              <%= fa_icon "plus" %>
-            <% end %>
-          </h3>
-        </div>
-        <div class="panel-body">
-          <%= render 'shared/events_instances_list' %>
+  <div class="row">
+     <div class="col-sm-12">
+        <div class="panel panel-default events_instances-card">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Event Instances
+              <%= link_to new_event_instance_path(id: @event.id), class: "new-instance-button",
+              remote: true do %>
+                <%= fa_icon "plus" %>
+              <% end %>
+            </h3>
           </div>
+          
+          <div class="panel-body">
+            <%= render 'shared/events_instances_list' %>
+          </div>
+        </div>
       </div>
-    </div>
-    
-    
-
+  </div>
 </div>
 
-</div>
 <div class="container event-container">
   <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-default forums-card event-card">
         <div class="panel-heading">
-
-        
-
           <h3 class="panel-title">
             Forums
             <%= link_to new_forum_thread_path(event_id: @event.id), class: "new-instance-button",
@@ -46,12 +40,13 @@
             <% end %>
           </h3>
         </div>
+              
         <div class="panel-body">
           <%= render 'shared/forum_threads_list' %>
-
         </div>
       </div>
     </div>
+            
     <div class="col-sm-4">
       <div class="panel panel-default attachments-card event-card">
         <div class="panel-heading">
@@ -62,14 +57,13 @@
             <% end %>
           </h3>
         </div>
-          <div class="panel-body">
-          <% @event.attachments.each do |a| %>
-            <span><%= a.name %></span>
-            <span><%= link_to "Delete", delete_attachment_path(id: a.attachment_id) %></span>
-          <% end %>
-          </div>
+              
+        <div class="panel-body">
+          <%= render 'shared/attachments_list' %>
+        </div>
       </div>
     </div>
+            
     <div class="col-sm-4">
       <div class="panel panel-default polls-card even-card">
         <div class="panel-heading">
@@ -81,6 +75,7 @@
             <% end %>
           </h3>
         </div>
+              
         <div class="panel-body">
           <% @event.polls.each do |p| %>
             <span><%= p.name %></span>
@@ -89,35 +84,28 @@
         </div>
       </div>
     </div>
+  </div>
+          
+  <div class="row">      
     <div class="col-sm-12">
       <div class="panel panel-default polls-card">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            Other Options
-           
-          </h3>
+          <h3 class="panel-title">Other Options </h3>
         </div>
-        <div class="panel-body">
-           
-           <%= link_to invite_user_form_event_path, class: "invite-user-button",
-    title: "Invite User", remote: true do %>
-    Invite Users
-  <% end %><br/>
-            <a href="#">Uninvite users</a><br/>
-            
-            <a href="#">Print QR Code</a><br/>
-            <a href="#" onclick="confirm('Are you sure you want to delete this event')">Delete event</a>
         
-       
-      
-   
-          
-          
+        <div class="panel-body">
+          <br>
+           <%= link_to invite_user_form_event_path, class: "invite-user-button",
+          title: "Invite User", remote: true do %>
+          Invite Users <% end %>
+          </br>
+          <br><a href="#">Uninvite users</a></br>
+          <br><a href="#">Print QR Code</a></br>
+          <br><a href="#" onclick="confirm('Are you sure you want to delete this event')">Delete event</a></br>
         </div>
       </div>
     </div>
   </div>
-  
 </div>
 
 

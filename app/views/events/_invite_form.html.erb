@@ -1,5 +1,5 @@
 <div class="header">
-  <h2>Invite User to: </h2>
+  <h1> Invite User to: </h1>
 </div>
 
 <div align="center" class= "event_info">
@@ -10,14 +10,28 @@
 <div class="errors-container">
   <%= render 'shared/form_errors', object: @event %>
 </div>
-
+ <br>
   <div class="form-group">
-    <%= label_tag :user_email %>
-    <%= email_field_tag :user_email, "", class: "form-control" %>
+        <table align="center">
+    <thead>
+      <tr>
+        <th>  <%= label_tag :user_email %></th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+            <tr>
+              <td style="width:77%"><%= email_field_tag :user_email, "", class: "form-control" %></td>
+              <td> <%= link_to events_invite_app_path, class: "btn btn-primary", title: "Invite more friends", remote: true do %>
+                  <%= fa_icon "user-plus" %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
   </div>
   
+  
   <div class= "actions">
-      <button type="button" class="btn btn-primary"> <%= fa_icon "plus" %> Invite more </button>
-      <button type="button" class="btn btn-primary">Done</button>
+    <%= submit_tag "Submit", class: "btn btn-primary btn-lg" %>
   </div>
 <% end %>

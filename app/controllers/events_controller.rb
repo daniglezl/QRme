@@ -3,7 +3,6 @@ class EventsController < ApplicationController
   layout 'dashboard'
   include EventsConcern
   
-  
   def invite_event
    @event = Event.find(params[:id])
   end
@@ -11,6 +10,10 @@ class EventsController < ApplicationController
   def uninvite_event
    @event = Event.find(params[:id])
    @invitation = @event.invitations
+  end
+  
+  def invite_app
+    @user = current_user
   end
   
   def show

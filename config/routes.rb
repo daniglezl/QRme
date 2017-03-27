@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get '/events/invite_event' , to: 'events#invite_event'
   get '/events/uninvite_event' , to: 'events#uninvite_event'
+  get '/events/invite_app' , to: 'events#invite_app'
    
   resources :events
   resources :event_instances, only: :destroy

@@ -4,9 +4,9 @@
   <h5><i><%= @event.user.username %></i></h5>
 
 
- <%= link_to events_invite_event_path(id: @event.id),
-  class: "invite-user-button", title: "Invite User", remote: true do %>
-  <%= fa_icon "user-plus" %>
+ <%= link_to events_invite_app_path,
+  class: "invite-user-button", title: "Invite friends to app", remote: true do %>
+  <%= fa_icon "bullhorn" %>
   <% end %>
 
   <h5>Number of Invitees <%= @event.invitations.count %></h5>

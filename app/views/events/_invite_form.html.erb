@@ -1,16 +1,18 @@
-<div class="header">
+<div style="position: relative; left: -10px;",  class="header">
   <h1> Invite User to: </h1>
 </div>
 
-<div align="center" class= "event_info">
+<div align= "center", class= "event_info">
     <h4> <%= @event.name %> </h4>
 </div>
 
-<%= form_tag events_invite_event_path(id: @event.id), remote: true do %>
+<%= form_tag invite_event_errors_event_path(id: @event.id), remote: true do %>
 <div class="errors-container">
   <%= render 'shared/form_errors', object: @event %>
 </div>
+
  <br>
+ 
   <div class="form-group">
         <table align="center">
     <thead>
@@ -21,17 +23,17 @@
     </thead>
     <tbody>
             <tr>
-              <td style="width:77%"><%= email_field_tag :user_email, "", class: "form-control" %></td>
-              <td> <%= link_to events_invite_app_path, class: "btn btn-primary", title: "Invite more friends", remote: true do %>
-                  <%= fa_icon "user-plus" %> </td>
+              <td style="width:70%"><%= email_field_tag :user_email, "", class: "form-control" %></td>
+              <td>
+                  <%= submit_tag "Submit", class: "btn btn-primary" %>
+            </td>
             </tr>
-          <% end %>
         </tbody>
+        <% end %>
       </table>
   </div>
   
   
   <div class= "actions">
-    <%= submit_tag "Submit", class: "btn btn-primary btn-lg" %>
+      <button id= "Button_done", class="btn btn-primary"> Done</button>
   </div>
-<% end %>

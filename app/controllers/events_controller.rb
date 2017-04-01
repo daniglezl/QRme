@@ -16,6 +16,16 @@ class EventsController < ApplicationController
     @user = current_user
   end
   
+  def accept_event
+    @event = Event.find(params[:id])
+    @user = current_user
+  end
+
+  def remove_invite
+    @invitation_remove = Invitation.find(params[:id])
+    @invitation_remove.destroy
+  end
+  
   def show
     @event = EventInstance.find(params[:id]).event
   end
@@ -42,11 +52,7 @@ class EventsController < ApplicationController
     get_event_instances
   end
 
-  def invite_user_form
-    @event = Event.find(params[:id])
-  end
-
-  def invite_user
+  def invite_event_errors
     @event = Event.find(params[:id])
     @user = User.find_by(email: params[:user_email])
     if @user.blank?

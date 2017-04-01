@@ -106,13 +106,13 @@
         </div>
         <div class="panel-body">
             <div>
-              <%= link_to events_invite_event_path(id: @event.id), remote: true do %>
+              <%= link_to invite_event_event_path(id: @event.id), remote: true do %>
               Invite User
               <% end %>
             </div>
             <div>
               <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
-              Uninvite users
+              Uninvite User
               <% end %>
             </div>
             <a href="#">Print QR Code</a><br/>

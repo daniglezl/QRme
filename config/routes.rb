@@ -18,19 +18,25 @@ Rails.application.routes.draw do
   end
   devise_for :users, skip: [:sessions], controllers: { registrations: 'devise_custom/registrations' }
 
+  
+  get '/dashboard' , to: 'dashboard#index'
   get :dashboard, to: 'dashboard#index', as: :dashboard_index
 
 
-  get '/events/invite_event' , to: 'events#invite_event'
+ # get '/events/invite_event' , to: 'events#invite_event'
   get '/events/uninvite_event' , to: 'events#uninvite_event'
+  get '/events/invite_app' , to: 'events#invite_app'
+  get '/events/accept_event/:id' , to: 'events#accept_event'
+
    
   resources :events
   resources :event_instances, only: :destroy
 
   resources :events do
     member do
-      get   :invite_user_form
-      post  :invite_user
+      get   :invite_event
+      post  :invite_event_errors
+      delete  :remove_invite
     end
   end
   resources :event_instances

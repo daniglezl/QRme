@@ -1,0 +1,29 @@
+<div class="header">
+  <h2>Invite friends to the system: </h2>
+</div>
+<br>
+<div class: "form-group">
+    <table align="center">
+    <thead>
+      <tr>
+        <th> Enter email</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+            <tr>
+              <td style="width:82%"><%= email_field_tag 'email', "", class: "form-control" %></td>
+              <td> <%= link_to events_invite_app_path, class: "btn btn-primary", title: "Invite more friends", remote: true do %>
+                    <%= fa_icon "user-plus" %>
+                   </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
+  <br>
+  
+  <div class="actions">
+    <%= submit_tag "Submit", class: "btn btn-primary btn-lg" %>
+  </div>

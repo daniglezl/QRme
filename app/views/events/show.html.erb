@@ -4,9 +4,9 @@
   <h5><i><%= @event.user.username %></i></h5>
 
 
- <%= link_to events_invite_event_path(id: @event.id),
-  class: "invite-user-button", title: "Invite User", remote: true do %>
-  <%= fa_icon "user-plus" %>
+ <%= link_to events_invite_app_path,
+  class: "invite-user-button", title: "Invite friends to app", remote: true do %>
+  <%= fa_icon "bullhorn" %>
   <% end %>
 
   <h5>Number of Invitees <%= @event.invitations.count %></h5>
@@ -101,12 +101,18 @@
         </div>
         
         <div class="panel-body">
-          <div>
-            <%= link_to events_invite_event_path(id: @event.id), remote: true do %>
+            <div>
+              <%= link_to invite_event_event_path(id: @event.id), remote: true do %>
               Invite User
-            <% end %>
-          </div>
-          
+              <% end %>
+            </div>
+            <div>
+              <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
+              Uninvite User
+              <% end %>
+            </div>
+            <a href="#">Print QR Code</a><br/>
+            <a href="#" onclick="confirm('Are you sure you want to delete this event')">Delete event</a>
           <div>
             <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
               Uninvite users

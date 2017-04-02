@@ -2,7 +2,7 @@
   <h2>Invite User</h2>
 </div>
 
-<%= form_tag invite_user_event_path(id: @event.id), remote: true do %>
+<%= form_tag invite_user_event_path(@event.id), remote: true do %>
 <div class="errors-container">
   <%= render 'shared/form_errors', object: @event %>
 </div>

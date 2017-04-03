@@ -39,6 +39,6 @@ class User < ApplicationRecord
   end
 
   def to_token_payload
-    { user_id: id }
+    { user_id: id.to_s }
   end
 end

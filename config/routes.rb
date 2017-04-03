@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  post 'user_token' => 'user_token#create'
+  get 'user_token' => 'user_token#create'
 
   root to: 'statics#home'
 
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   devise_for :users, skip: [:sessions], controllers: { registrations: 'devise_custom/registrations' }
 
-  
+
   get '/dashboard' , to: 'dashboard#index'
   get :dashboard, to: 'dashboard#index', as: :dashboard_index
 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get '/events/invite_app' , to: 'events#invite_app'
   get '/events/accept_event/:id' , to: 'events#accept_event'
 
-   
+
   resources :events
   resources :event_instances, only: :destroy
 
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   resources :attachments
   resources :comments
   resources :attendances
-  
+
   get '/event_instances/qrcode/:id', to: 'event_instances#qrcode', as: 'qrcode_event_instance'
-  
+
 end

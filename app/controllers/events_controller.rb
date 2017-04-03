@@ -47,7 +47,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = EventInstance.find(params[:id]).event
+    @event = Event.find(params[:id])
     @event.update_attributes event_params
     get_event_instances
   end

@@ -8,6 +8,12 @@ class UserTokenController < Knock::AuthTokenController
 
   private
 
+  def authenticate
+    unless entity.present? && entity.authenticate(auth_params[:password])
+      head :unauthorized and return
+    end
+  end
+
   def auth_params
     token = JWT.decode params[:token], nil, false
     params[:auth] = {}

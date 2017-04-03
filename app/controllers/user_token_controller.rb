@@ -1,3 +1,4 @@
+require 'jwt'
 class UserTokenController < Knock::AuthTokenController
 
   def create

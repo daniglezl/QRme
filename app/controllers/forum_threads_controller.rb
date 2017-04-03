@@ -3,7 +3,7 @@ class ForumThreadsController < ApplicationController
   layout 'dashboard'
 
   def new
-    event = Event.find(params[:event_id])
+    event = .find(params[:event_id])
     @forum_thread = event.forum_threads.build
   end
 

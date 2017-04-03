@@ -1,0 +1,40 @@
+ <table class="table">
+    <tr>
+        <th>Date</th>
+        <th>Location</th>
+        <th># of Attendees</th>
+        <th>Mark Attendance</th>
+        <th>Actions</th>
+    </tr>
+    <% @event.event_instances.each do |ei| %>
+        <tr>
+            <td>
+                <%= ei.date.strftime "%b %e, %Y @ %l:%M %P"  %>
+            </td>
+            <td>
+                <%= ei.location %>
+            </td>
+            <td>
+                <%= ei.attendances.count %>
+            </td>
+            <td>
+                <%= link_to  edit_attendance_path(id: @event.id), class: "new-instance-button",
+                remote: true do %>
+                <%= fa_icon "check" %>  <% end %>
+            </td>
+            <td>
+                <%= link_to qrcode_event_instance_path(id: ei.id), class: "new-instance-button",
+                remote: true do %>
+                <%= fa_icon "print" %> <% end %> | 
+                <%= link_to edit_event_instance_path(id: ei.id), class: "new-instance-button",
+                remote: true do %>
+                <%= fa_icon "pencil" %> <% end %> | 
+                <%= link_to event_instance_path(ei), method: :delete,
+                data: { confirm: "Are you sure?",
+                message: "The event's information will be lost and cannot be recovered.",
+                }, remote: true, title: "Delete" do %>
+                <%= fa_icon "trash" %> <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>

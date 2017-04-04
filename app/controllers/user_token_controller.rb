@@ -10,7 +10,8 @@ class UserTokenController < Knock::AuthTokenController
 
   def authenticate
     unless entity.present? && !auth_params.blank? && entity.authenticate(auth_params[:password])
-      render json: { errors: [ { detail: "Access denied" } ] }, status: 401 and return
+      uri = params["redirect_uri"] + "&error=unauthorized&state=#{params["state"]}"
+      redirect_to uri and return
     end
   end
 

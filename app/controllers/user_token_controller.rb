@@ -9,17 +9,21 @@ class UserTokenController < Knock::AuthTokenController
   private
 
   def authenticate
-    unless entity.present? && entity.authenticate(auth_params[:password])
-      head :unauthorized and return
+    unless entity.present? && !auth_params.blank? && entity.authenticate(auth_params[:password])
+      render json: { errors: [ { detail: "Access denied" } ] }, status: 401 and return
     end
   end
 
   def auth_params
-    token = JWT.decode params[:token], nil, false
-    params[:auth] = {}
-    params[:auth][:email] = token[0]["data"]["email"]
-    params[:auth][:password] = token[0]["data"]["password"]
-    params.require(:auth).permit :email, :password
+    begin
+      token = JWT.decode params[:token], nil, false
+      params[:auth] = {}
+      params[:auth][:email] = token[0]["data"]["email"]
+      params[:auth][:password] = token[0]["data"]["password"]
+      params.require(:auth).permit :email, :password
+    rescue
+      {}
+    end
   end
 
 end

@@ -1,0 +1,18 @@
+<% @event.polls.each do |ft| %>
+  <div class="poll-container">
+    <span class="name">
+      <%= link_to ft.name, poll_path(ft) %>
+    </span>
+    <span class="actions">
+      <%= link_to edit_poll_path(ft), remote: true, title: "Edit" do %>
+        <%= fa_icon "pencil" %>
+      <% end %>
+      <%= link_to poll_path(ft), method: :delete,
+      data: { confirm: "Are you sure?",
+      message: "The poll's information will be lost and cannot be recovered.",
+      }, remote: true, title: "Delete" do %>
+        <%= fa_icon "trash" %>
+      <% end %>
+    </span>
+  </div>
+<% end %>

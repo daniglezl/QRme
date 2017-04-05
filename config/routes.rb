@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :poll_answers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'user_token' => 'user_token#create'
 
@@ -40,7 +41,11 @@ Rails.application.routes.draw do
     end
   end
   resources :event_instances
-  resources :polls
+  resources :polls do 
+    member do
+      get :vote
+    end
+  end
   resources :forum_threads
   resources :attachments
   resources :comments

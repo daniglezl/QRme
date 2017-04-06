@@ -10,8 +10,10 @@ class ForumThreadsController < ApplicationController
   def create
     event = Event.find(params[:event_id])
     @forum_thread = event.forum_threads.build forum_thread_params
-    @forum_thread.save
-    @forum_thread.update_attribute(:user_id, current_user.id)
+    if @forum_thread.save
+      @forum_thread.update_attribute(:user_id, current_user.id)
+      NotificationMailer.forum_thread_created(@forum_thread).deliver_later
+    end
     @event = Event.find(params[:event_id])
   end
 

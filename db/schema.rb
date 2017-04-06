@@ -91,15 +91,6 @@ ActiveRecord::Schema.define(version: 20170326010751) do
     t.index ["poll_id"], name: "index_poll_answers_on_poll_id", using: :btree
   end
 
-  create_table "poll_question_answers", force: :cascade do |t|
-    t.integer  "poll_id"
-    t.string   "title"
-    t.integer  "count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["poll_id"], name: "index_poll_question_answers_on_poll_id", using: :btree
-  end
-
   create_table "polls", force: :cascade do |t|
     t.integer  "event_id"
     t.string   "name"
@@ -139,6 +130,5 @@ ActiveRecord::Schema.define(version: 20170326010751) do
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "users"
   add_foreign_key "poll_answers", "polls"
-  add_foreign_key "poll_question_answers", "polls"
   add_foreign_key "polls", "events"
 end

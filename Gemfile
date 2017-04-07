@@ -26,12 +26,13 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'cancancan'
 gem 'rails_admin', '~> 1.0'
 gem 'gravtastic'
 gem "font-awesome-rails"
 gem 'ancestry'
 gem 'knock', git: 'git://github.com/daniglezl/knock.git', branch: 'config_getter_name'
+gem 'cancancan', '~> 1.10'
+gem "figaro"
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -9,7 +9,7 @@ class User < ApplicationRecord
          :timeoutable
 
   alias_method :authenticate, :valid_password?
-  
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   has_many :events, dependent: :destroy
@@ -35,6 +35,16 @@ class User < ApplicationRecord
   end
 
   def self.from_token_payload payload
-    self.find payload["sub"]
+    self.find payload["user_id"]
+  end
+
+  def to_token_payload
+    {
+      user_id: id.to_s,
+      custom: {
+        name: username,
+        email: email
+      }
+    }
   end
 end

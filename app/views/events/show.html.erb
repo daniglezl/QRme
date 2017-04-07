@@ -84,10 +84,7 @@
         </div>
               
         <div class="panel-body">
-          <% @event.polls.each do |p| %>
-            <span><%= p.name %></span>
-            <span><%= link_to "Edit", edit_poll_path(p) %></span>
-          <% end %>
+          <%= render 'shared/polls_list' %>
         </div>
       </div>
     </div>

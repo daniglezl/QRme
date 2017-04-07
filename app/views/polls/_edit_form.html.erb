@@ -1,0 +1,42 @@
+<div class="header">
+  <h2><%= params[:action] == "new" ? "New" : "Edit" %> Poll</h2>
+</div>
+<%= form_for @poll, remote: true do |f| %>
+  <div class="errors-container">
+    <%= render 'shared/form_errors', object: @poll %>
+  </div>
+
+  <%= hidden_field_tag :event_id, @poll.event_id %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  
+  <div class="col-sm-14">
+        <div class="panel panel-default polls-card even-card">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Poll Answers
+              <%= link_to new_poll_answer_path(poll_id: @poll.id), class: "new-instance-button",
+              remote: true do %>
+                <%= fa_icon "plus" %>
+              <% end %>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <%= render 'shared/poll_answers_list' %>
+          </div>
+        </div>
+      </div>
+
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary btn-lg" %>
+  </div>
+<% end %>
+
+    
+
+
+
+</div>

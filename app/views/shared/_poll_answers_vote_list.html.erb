@@ -1,0 +1,15 @@
+<% @poll.poll_answers.each do |ft| %>
+  <div class="poll-container">
+    <span class="name">
+      <%= link_to ft.title, poll_answer_path(ft) %>
+    </span>
+    <span class="actions">
+      <%= link_to edit_poll_answer_path(ft),
+      data: { confirm: "Are you sure?",
+      message: "The poll vote will be recorded.",
+      }, remote: true, title: "Vote" do %>
+        <button class="btn-xs btn-primary btn-block">Vote</button>
+      <% end %>
+    </span>
+  </div>
+<% end %>

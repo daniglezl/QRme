@@ -16,19 +16,7 @@
     <%= f.number_field :recurrent, class: "form-control" %>
   </div>
 
-  <%= f.fields_for :event_instances do |ei| %>
-    <% if ei.object.id == @event_instance_id.to_i %>
-      <div class="form-group">
-        <%= ei.label :date, "Date and Time:" %>
-        <%= ei.datetime_select :date, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= ei.label :location %>
-        <%= ei.text_area :location, class: "form-control" %>
-      </div>
-    <% end %>
-  <% end %>
+ 
 
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-primary btn-lg" %>

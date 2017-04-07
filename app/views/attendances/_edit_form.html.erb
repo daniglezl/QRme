@@ -12,12 +12,12 @@
       </tr>
     </thead>
     <tbody>
-      <% @event.invitations.each do |ei| %>
+      <% @event_instance.event.invitations.each do |ei| %>
         <tr>
           <td><%= ei.user.username %></td>
           <td>
            
-            <input type="checkbox" name="attended" value="attended" />
+            <input type="checkbox" class="attcheck" id="<%=ei.user_id%>" name="<%=ei.user_id%>" onclick="updateAttendance(<%=@event_instance.id%>,<%=ei.user_id%>)"  <%= if @event_instance.attendances.where(user_id: ei.user_id).count>0 then  "checked" else "" end%> />
             
           </td>
         
@@ -32,9 +32,35 @@
 
   
   <div class="actions"  >
-  <button class="btn-lg btn-primary" onclick="alert('Attendance successfully updated !');" >Done</button>
+  <a class="btn-lg btn-primary" href="/attendances/doneattendance?id=<%=@event_instance.event.id%>" data-remote="true" >Done</a>
 </div>
 
  
 
+<script type="text/javascript">
 
+  function updateAttendance(ei,userid)
+  {
+    var checked = "false";
+    debugger
+    if ($("#"+userid).is(':checked'))
+      checked = "true";
+    $.ajax(
+      {
+        url:"/attendances/attended",
+        type:"POST",
+        data:{event_instance:ei,
+              userid: userid,
+              checked: checked
+            },
+       
+        error(xhr, ajaxOptions, thrownError)
+        {
+          alert(thrownError);
+        }
+        }
+        
+      
+      );
+  }
+</script>

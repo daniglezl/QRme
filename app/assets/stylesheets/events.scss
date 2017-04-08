@@ -32,6 +32,10 @@ body.events.show {
 }
 
 .event-container {
+  .actions {
+        float: right;
+        i:first-child { margin-right: 5px; }
+      }
   .event-card {
     .forum-container {
       height: 25px;
@@ -40,6 +44,15 @@ body.events.show {
         float: right;
         i:first-child { margin-right: 5px; }
       }
+    }
+    .poll-container {
+      height: 10px;
+      line-height: 15px;
+      .actions {
+        float: right;
+        i:first-child { margin-right: 5px; }
+      }
+      
     }
   }
 }

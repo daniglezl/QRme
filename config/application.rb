@@ -18,7 +18,8 @@ module QRme
      config.time_zone = 'Eastern Time (US & Canada)'
      
      #mailer configuration
-         config.action_mailer.smtp_settings = {
+
+    config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
       domain:               ENV["EMAIL_DOMAIN"],

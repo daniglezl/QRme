@@ -33,6 +33,7 @@ gem 'ancestry'
 gem 'knock', git: 'git://github.com/daniglezl/knock.git', branch: 'config_getter_name'
 gem 'cancancan', '~> 1.10'
 gem "figaro"
+gem 'rqrcode_png'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -52,3 +53,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'carrierwave', '1.0.0'
+
+
+

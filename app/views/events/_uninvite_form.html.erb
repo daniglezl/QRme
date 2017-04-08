@@ -1,29 +1,7 @@
+ <h2 align= "center"> Uninvite User </h2>
 <div class="main-table-container">
-    <h2> Uninvite User </h2>
-  <table class="main-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Uninvite</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @invitation.each do |inv| %>
-            <tr>
-              <td><%= inv.user.username %></td>
-              <td>
-                <%= link_to remove_invite_event_path(inv), method: :delete,
-                data: {confirm: "Are you sure?",
-                message: "The user will be removed from the invitees list.",
-                }, remote: true, title: "Delete" do %>
-                  <%= fa_icon "trash" %>
-          <% end %>    
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+    <%= render 'shared/uninvite_users_list'%>
+</div>
     
  <div class= "actions">
       <button id= "Button_done", class="btn btn-primary active btn-lg"> Done</button>

@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   def uninvite_event
    @event = Event.find(params[:id])
    @invitation = @event.invitations
+   get_event_instances
   end
   
   def invite_app
@@ -23,6 +24,7 @@ class EventsController < ApplicationController
 
   def remove_invite
     @invitation_remove = Invitation.find(params[:id])
+    @invitation = @invitation_remove.event.invitations
     @invitation_remove.destroy
   end
   
@@ -58,7 +60,7 @@ class EventsController < ApplicationController
     if @user.blank?
       @event.errors.add(:base, "A user with the specified email was not found")
     else
-      # logic to send invite email to user
+       NotificationMailer.accept_invite_event(current_user, @user, @event).deliver_now
     end
   end
 

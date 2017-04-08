@@ -13,8 +13,8 @@
               <td><%= inv.user.username %></td>
               <td>
                 <%= link_to remove_invite_event_path(inv), method: :delete,
-                data: { confirm: "Are you sure?",
-                message: "The event's information will be lost and cannot be recovered.",
+                data: {confirm: "Are you sure?",
+                message: "The user will be removed from the invitees list.",
                 }, remote: true, title: "Delete" do %>
                   <%= fa_icon "trash" %>
           <% end %>    

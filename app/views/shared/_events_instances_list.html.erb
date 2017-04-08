@@ -18,7 +18,7 @@
                 <%= ei.attendances.count %>
             </td>
             <td>
-                <%= link_to  edit_attendance_path(id: @event.id), class: "new-instance-button",
+                <%= link_to  edit_attendance_path(id: ei), class: "new-instance-button",
                 remote: true do %>
                 <%= fa_icon "check" %>  <% end %>
             </td>

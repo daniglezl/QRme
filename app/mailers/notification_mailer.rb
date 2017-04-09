@@ -5,7 +5,6 @@ class NotificationMailer < ApplicationMailer
     @forum = forum
     @event = @forum.event
     emails = @event.invited_users.pluck(:email).join(", ")
-    emails = "daniglezl@yahoo.com"
     if !emails.blank?
       mail to: emails,
         from: "QRme App",

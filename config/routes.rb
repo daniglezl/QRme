@@ -1,3 +1,5 @@
+require 'api_constraints'
+
 Rails.application.routes.draw do
   resources :poll_answers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
     end
   end
   resources :event_instances
-  resources :polls do 
+  resources :polls do
     member do
       get :vote
     end
@@ -52,5 +54,12 @@ Rails.application.routes.draw do
   resources :attendances
 
   get '/event_instances/qrcode/:id', to: 'event_instances#qrcode', as: 'qrcode_event_instance'
+
+  # api
+  namespace :api, defaults: { format: 'json' } do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :events
+    end
+  end
 
 end

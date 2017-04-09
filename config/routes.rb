@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get '/events/invite_app' , to: 'events#invite_app'
   get '/events/accept_event/:id' , to: 'events#accept_event'
 
+  get '/events/qrcode/:id', to: 'events#qrcode', as: 'qrcode_event'
   get '/event_instances/qrcode/:id', to: 'event_instances#qrcode', as: 'qrcode_event_instance'
   post '/attendances/attended/', to: 'attendances#attended', as: 'attendances_attended'
   get '/attendances/doneattendance/', to: 'attendances#doneattendance', as: 'attendances_doneattendance'

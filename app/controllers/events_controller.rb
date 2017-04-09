@@ -61,6 +61,12 @@ class EventsController < ApplicationController
       # logic to send invite email to user
     end
   end
+  
+  def qrcode
+    @event = Event.find(params[:id])
+    qr = RQRCode::QRCode.new("i"+ @event.id.to_s, :size => 4, :level => :h ).to_img
+    @qrimg = qr.resize(200, 200)
+  end
 
   private
 

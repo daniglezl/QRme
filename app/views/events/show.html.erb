@@ -108,15 +108,17 @@
               Uninvite User
               <% end %>
             </div>
-            <a href="#">Print QR Code</a><br/>
-            <a href="#" onclick="confirm('Are you sure you want to delete this event')">Delete event</a>
+            <%= link_to qrcode_event_path(id: @event.id), class: "new-instance-button",
+                remote: true do %>
+                Print Invitations QR Code <% end %><br/>
+          
           <div>
             <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
               Uninvite users
             <% end %>
           </div>
-          <a href="#">Print QR Code</a>
-          <a href="#" onclick="confirm('Are you sure you want to delete this event')">Delete event</a>
+         <br/>
+          <a href="#" >Delete event</a>
         </div>
       </div>
     </div>

@@ -37,7 +37,11 @@ class EventInstancesController < ApplicationController
   
   def qrcode
     @event_instance = EventInstance.find(params[:id])
+    qr = RQRCode::QRCode.new( @event_instance.id.to_s, :size => 4, :level => :h ).to_img
+    @qrimg = qr.resize(200, 200)
+    
   end
+  
   
   def event_instance_params
     params.require(:event_instance).permit(:date, :location)

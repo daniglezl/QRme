@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   get '/events/invite_app' , to: 'events#invite_app'
   get '/events/accept_event/:id' , to: 'events#accept_event'
 
+  get '/event_instances/qrcode/:id', to: 'event_instances#qrcode', as: 'qrcode_event_instance'
+  post '/attendances/attended/', to: 'attendances#attended', as: 'attendances_attended'
+  get '/attendances/doneattendance/', to: 'attendances#doneattendance', as: 'attendances_doneattendance'
 
   resources :events
   resources :event_instances, only: :destroy
@@ -53,7 +56,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :attendances
 
-  get '/event_instances/qrcode/:id', to: 'event_instances#qrcode', as: 'qrcode_event_instance'
+  
 
   # api
   namespace :api, defaults: { format: 'json' } do

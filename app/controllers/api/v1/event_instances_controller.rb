@@ -5,7 +5,7 @@ module Api
 
       def mark_present
         event_instance = EventInstance.find(params[:id])
-        if User.find_by(id: params[:user_id]).count < 1
+        if User.where(id: params[:user_id]).count < 1
           render json: { status: "Bad Request", error: "User not found" }, status: 400 and return
         end
         if event_instance.attendances.where(user_id: params[:user_id]).count > 0

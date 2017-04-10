@@ -108,17 +108,24 @@
               Uninvite User
               <% end %>
             </div>
+            <%if @event.open%>
             <%= link_to qrcode_event_path(id: @event.id), class: "new-instance-button",
                 remote: true do %>
                 Print Invitations QR Code <% end %><br/>
+                <%end%>
 
           <div>
             <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
               Uninvite users
             <% end %>
           </div>
-         <br/>
-          <a href="#" >Delete event</a>
+        
+         <%= link_to event_path(id: @event.id), method: :delete,
+              data: { confirm: "Are you sure?",
+              message: "The event's information will be lost and cannot be recovered. All the event instances will also be removed",
+              }, remote: true, title: "Delete" do %>
+               Delete Event
+              <% end %>
         </div>
       </div>
     </div>

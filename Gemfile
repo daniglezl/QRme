@@ -36,6 +36,7 @@ gem "figaro"
 gem 'rqrcode_png'
 gem 'rabl'
 gem 'oj'
+gem 'active_record_union'
 
 group :development, :test do
   gem 'byebug', platform: :mri

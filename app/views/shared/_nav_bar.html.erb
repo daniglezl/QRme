@@ -13,16 +13,13 @@
         <%= fa_icon "calendar" %> Events
       <% end %>
     </li>
-    <li>
-      <%= link_to "#" do %>
-        <%= fa_icon "bar-chart" %> Stats
-      <% end %>
-    </li>
-    <li>
-      <%= link_to "#" do %>
-        <%= fa_icon "users" %> Users
-      <% end %>
-    </li>
+    <% if current_user.is? :admin %>
+      <li>
+        <%= link_to "/admin" do %>
+          <%= fa_icon "tachometer" %> Admin Panel
+        <% end %>
+      </li>
+    <% end %>
     <li>
       <%= link_to destroy_user_session_path, method: :delete do %>
         <%= fa_icon "sign-out" %> Log Out

@@ -38,5 +38,14 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+
+    config.model "User" do
+      update do
+        configure :roles_mask do
+          partial "user_roles_mask"
+        end
+      end
+    end
+
   end
 end

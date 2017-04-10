@@ -3,9 +3,10 @@
 </div>
 
 <%= form_for @event, remote: true do |f| %>
-<div class="errors-container">
-  <%= render 'shared/form_errors', object: @event %>
-</div>
+  <div class="errors-container">
+    <%= render 'shared/form_errors', object: @event %>
+  </div>
+
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
@@ -16,7 +17,11 @@
     <%= f.number_field :recurrent, class: "form-control" %>
   </div>
 
- 
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :open %> Open
+    </label>
+  </div>
 
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-primary btn-lg" %>

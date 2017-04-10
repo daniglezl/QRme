@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
   layout 'dashboard'
   include EventsConcern
-  
+
   def invite_event
    @event = Event.find(params[:id])
   end
@@ -11,11 +11,11 @@ class EventsController < ApplicationController
    @event = Event.find(params[:id])
    @invitation = @event.invitations
   end
-  
+
   def invite_app
     @user = current_user
   end
-  
+
   def accept_event
     @event = Event.find(params[:id])
     @user = current_user
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     @invitation_remove = Invitation.find(params[:id])
     @invitation_remove.destroy
   end
-  
+
   def show
     @event = EventInstance.find(params[:id]).event
   end
@@ -61,7 +61,7 @@ class EventsController < ApplicationController
       # logic to send invite email to user
     end
   end
-  
+
   def qrcode
     @event = Event.find(params[:id])
     qr = RQRCode::QRCode.new("i"+ @event.id.to_s, :size => 4, :level => :h ).to_img
@@ -71,7 +71,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :recurrent, event_instances_attributes: [
+    params.require(:event).permit(:name, :recurrent, :open, event_instances_attributes: [
       :id, :date, :location
     ])
   end

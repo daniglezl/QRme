@@ -57,12 +57,17 @@ Rails.application.routes.draw do
   resources :comments
   resources :attendances
 
-  
+
 
   # api
   namespace :api, defaults: { format: 'json' } do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      resources :events
+      resources :events do
+        post :invite, on: :member
+      end
+      resources :event_instances do
+        post :mark_present, on: :member
+      end
     end
   end
 

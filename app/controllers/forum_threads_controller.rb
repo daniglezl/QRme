@@ -27,7 +27,9 @@ class ForumThreadsController < ApplicationController
 
   def update
     @forum_thread = ForumThread.find(params[:id])
-    @forum_thread.update_attributes(forum_thread_params)
+    if @forum_thread.update_attributes(forum_thread_params)
+      NotificationMailer.forum_thread_updated(@forum_thread).deliver_later
+    end
     @event = @forum_thread.event
   end
 
@@ -35,6 +37,7 @@ class ForumThreadsController < ApplicationController
     @forum_thread = ForumThread.find(params[:id])
     @event = @forum_thread.event
     @forum_thread.destroy
+    NotificationMailer.forum_thread_destroyed(@event, @forum_thread.title).deliver_later
   end
 
   private

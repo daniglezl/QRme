@@ -9,7 +9,7 @@
   <%= fa_icon "bullhorn" %>
   <% end %>
 
-  <h5>Number of Invitees <%= @event.invitations.count %></h5>
+  <h5>Number of Invitees: <%= @event.invitations.count %></h5>
 </div>
 
 <div class="container event-container">
@@ -25,7 +25,7 @@
               <% end %>
             </h3>
           </div>
-          
+
           <div class="panel-body">
             <%= render 'shared/events_instances_list' %>
           </div>
@@ -47,13 +47,13 @@
             <% end %>
           </h3>
         </div>
-              
+
         <div class="panel-body">
           <%= render 'shared/forum_threads_list' %>
         </div>
       </div>
     </div>
-            
+
     <div class="col-sm-4">
       <div class="panel panel-default attachments-card event-card">
         <div class="panel-heading">
@@ -64,13 +64,13 @@
             <% end %>
           </h3>
         </div>
-              
+
         <div class="panel-body">
           <%= render 'shared/attachments_list' %>
         </div>
       </div>
     </div>
-            
+
     <div class="col-sm-4">
       <div class="panel panel-default polls-card even-card">
         <div class="panel-heading">
@@ -82,21 +82,21 @@
             <% end %>
           </h3>
         </div>
-              
+
         <div class="panel-body">
           <%= render 'shared/polls_list' %>
         </div>
       </div>
     </div>
   </div>
-          
-  <div class="row">      
+
+  <div class="row">
     <div class="col-sm-12">
       <div class="panel panel-default polls-card">
         <div class="panel-heading">
           <h3 class="panel-title">Other Options </h3>
         </div>
-        
+
         <div class="panel-body">
             <div>
               <%= link_to invite_event_event_path(id: @event.id), remote: true do %>
@@ -111,7 +111,7 @@
             <%= link_to qrcode_event_path(id: @event.id), class: "new-instance-button",
                 remote: true do %>
                 Print Invitations QR Code <% end %><br/>
-          
+
           <div>
             <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
               Uninvite users

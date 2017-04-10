@@ -76,6 +76,11 @@ class EventsController < ApplicationController
     qr = RQRCode::QRCode.new("i"+ @event.id.to_s, :size => 4, :level => :h ).to_img
     @qrimg = qr.resize(200, 200)
   end
+  
+ def destroy
+    event = Event.find(params[:id])
+    event.destroy
+  end
 
   private
 

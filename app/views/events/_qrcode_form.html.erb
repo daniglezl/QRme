@@ -1,10 +1,10 @@
 <div class="header">
   <h2>Invitations QR Code</h2>
 </div>
-
+ <%if @event.open %>
 <div id="toprint">
-    
-    <div class="row text-center">
+   
+    <div class="clearfix text-center">
         
         <div class="form-group">
             <h3>Event:  <%= @event.name %></h3>
@@ -13,7 +13,7 @@
     </div>
   
    
-    <div class="row" style="padding:5px">
+    <div class="clearfix" style="padding:5px">
             <div class="thumbnail">
                 <img src=" <%=@qrimg.to_data_url%>" />
             </div>
@@ -27,6 +27,12 @@
         <div class="actions">
             <button onclick="PrintElem('toprint')"  class="btn btn-success">Print Code</button>
        </div>
+       
+        <%else%>
+        <div class="clearfix text-center">
+          <h3 class="alert-danger">  This is a close event. An invitations qr code cannot be provided. </h3>
+        </div>
+         <%end%>
    
    
 <script>

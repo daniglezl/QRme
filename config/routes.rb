@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       post  :accept_invitation_event
       post  :invite_app_action
       delete  :remove_invite
+      delete   :leave_event
     end
   end
   resources :event_instances

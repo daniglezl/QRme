@@ -110,6 +110,16 @@
               <% end %>
             </div>
             
+             <div>
+              <%if @event.user_id != current_user.id%>
+              <%= link_to leave_event_event_path(id: @event.id), method: :delete,
+                  data: {confirm: "Are you sure?", message: "You will not be not able to see further information for this event.",
+              },   remote: true do %>
+              Leave Event
+              <% end %>
+            </div>
+            <% end %>
+            
             <%if @event.open%>
             <%= link_to qrcode_event_path(id: @event.id), class: "new-instance-button",
                 remote: true do %>

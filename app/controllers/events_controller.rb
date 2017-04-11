@@ -35,6 +35,12 @@ class EventsController < ApplicationController
     @invitation_remove.destroy
   end
   
+  def leave_event
+    @event = Event.find(params[:id])
+    @invitation_remove = Invitation.find_by(user_id: current_user.id, event_id: @event.id )
+    @invitation_remove.destroy
+  end  
+  
   def show
     @event = EventInstance.find(params[:id]).event
   end

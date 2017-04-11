@@ -1,3 +1,5 @@
+require 'api_constraints'
+
 Rails.application.routes.draw do
   resources :poll_answers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
   get '/events/invite_app' , to: 'events#invite_app'
   get '/events/accept_event/:id' , to: 'events#accept_event'
 
+  get '/events/qrcode/:id', to: 'events#qrcode', as: 'qrcode_event'
   get '/event_instances/qrcode/:id', to: 'event_instances#qrcode', as: 'qrcode_event_instance'
   post '/attendances/attended/', to: 'attendances#attended', as: 'attendances_attended'
   get '/attendances/doneattendance/', to: 'attendances#doneattendance', as: 'attendances_doneattendance'
@@ -46,7 +49,7 @@ Rails.application.routes.draw do
     end
   end
   resources :event_instances
-  resources :polls do 
+  resources :polls do
     member do
       get :vote
     end
@@ -56,6 +59,18 @@ Rails.application.routes.draw do
   resources :comments
   resources :attendances
 
-  
+
+
+  # api
+  namespace :api, defaults: { format: 'json' } do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :events do
+        post :invite, on: :member
+      end
+      resources :event_instances do
+        post :mark_present, on: :member
+      end
+    end
+  end
 
 end

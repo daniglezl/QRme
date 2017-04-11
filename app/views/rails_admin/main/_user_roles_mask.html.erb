@@ -1,0 +1,5 @@
+<%= check_box_tag "user[roles_mask][1]", 1, form.object.roles.include?("admin"), {:name => "user[roles_mask]"}%>
+<%= label_tag "user_roles_mask_1", "Admin" %><br />
+
+<%= check_box_tag "user[roles_mask][2]", 2, form.object.roles.include?("regular"), {:name => "user[roles_mask]"}%>
+<%= label_tag "user_roles_mask_2", "Regular" %><br />

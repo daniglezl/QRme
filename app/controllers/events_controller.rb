@@ -47,7 +47,16 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build event_params
     @event.save
-    get_event_instances
+    e = Event.find(@event.id)
+    ei = e.event_instances.first
+    location = ei.location
+    date = ei.date
+    r = e.recurrent
+    for i in 0..r-1
+      date = date + 7.days
+      e.event_instances.create(:location=> location,:date=> date)
+    end 
+      get_event_instances
   end
 
   def edit
@@ -71,10 +80,22 @@ class EventsController < ApplicationController
     end
   end
   
+  def qrcode
+    @event = Event.find(params[:id])
+    qr = RQRCode::QRCode.new("i"+ @event.id.to_s, :size => 4, :level => :h ).to_img
+    @qrimg = qr.resize(200, 200)
+  end
+  
+  def destroy
+    event = Event.find(params[:id])
+    event.destroy
+  end
+
+
   private
 
   def event_params
-    params.require(:event).permit(:name, :recurrent, event_instances_attributes: [
+    params.require(:event).permit(:name, :recurrent,:open, event_instances_attributes: [
       :id, :date, :location
     ])
   end

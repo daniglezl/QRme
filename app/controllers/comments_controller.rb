@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
     @comment = @forum_thread.comments.build comment_params
     if @comment.save
       @comment.update_attribute :user_id, current_user.id
+      NotificationMailer.comment_created(@comment).deliver_later
     end
   end
 

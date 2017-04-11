@@ -13,6 +13,13 @@ class NotificationMailer < ApplicationMailer
     end
   end
   
+  def invite_app_email (email, currentuser)
+    @name = currentuser
+    mail to: email,
+    from: "QRme App",
+    subject: "Invitation to join Qrme app"
+  end
+  
   def accept_invite_event (current_user, user_param, event_param)
     @user = user_param
     @email = @user.email

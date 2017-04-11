@@ -10,18 +10,25 @@ class EventsController < ApplicationController
   def uninvite_event
    @event = Event.find(params[:id])
    @invitation = @event.invitations
-   get_event_instances
   end
   
   def invite_app
-    @user = current_user
+  end
+  
+  def invite_app_action
+    NotificationMailer.invite_app_email(params['enter_email'], current_user).deliver_now
   end
   
   def accept_event
     @event = Event.find(params[:id])
     @user = current_user
   end
-
+  
+  def accept_invitation_event
+    @event = Event.find(params[:id])
+    Invitation.create(:event_id=>params[:id], :user_id=> current_user.id)
+  end
+  
   def remove_invite
     @invitation_remove = Invitation.find(params[:id])
     @invitation = @invitation_remove.event.invitations
@@ -63,7 +70,7 @@ class EventsController < ApplicationController
        NotificationMailer.accept_invite_event(current_user, @user, @event).deliver_now
     end
   end
-
+  
   private
 
   def event_params

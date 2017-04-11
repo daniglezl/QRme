@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     member do
       get   :invite_event
       post  :invite_event_errors
+      post  :accept_invitation_event
+      post  :invite_app_action
       delete  :remove_invite
     end
   end

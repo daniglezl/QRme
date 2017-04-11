@@ -116,15 +116,12 @@
                 Print Invitations QR Code <% end %><br/>
                 <%end%>
                 
-         <%= link_to event_path(id: @event.id), method: :delete,
+          <%= link_to event_path(id: @event.id), method: :delete,
               data: { confirm: "Are you sure?",
               message: "The event's information will be lost and cannot be recovered. All the event instances will also be removed",
               }, remote: true, title: "Delete" do %>
                Delete Event
               <% end %>
-          <a href="#">Print QR Code</a>
-          <br>
-          <a href="#" onclick="confirm('Are you sure you want to delete this event')">Delete event</a>
         </div>
       </div>
     </div>

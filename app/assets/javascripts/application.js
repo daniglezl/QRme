@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require vex.combined
 //= require sweetalert
+//= require Chart.bundle
 //= require toastr
 //= require jquery_ujs
 //= require turbolinks

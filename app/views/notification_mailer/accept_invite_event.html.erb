@@ -1,4 +1,4 @@
 <p> Dear <%= @user.username %>  :</p>
 
 <p> <%= @current_user.username %>, has sent you an invitation to event: '<%= @event.name %>'</p>
-<p>To accept this invitation, please follow <%= link_to "this link",  'https://qrme-bhern104.c9users.io/events/accept_event/'+ @event.id.to_s %> </p>
+<p>To accept this invitation, please follow <%= link_to "this link",  accept_event_invite_url(@event.id) %> </p>

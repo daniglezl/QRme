@@ -38,6 +38,7 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -56,7 +57,7 @@ Rails.application.configure do
 
   # For vagrant
   config.web_console.whitelisted_ips = '10.0.2.2'
-  config.web_console.whitelisted_ips = '73.179.200.79'
+
 
   # rack live reload
   config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload

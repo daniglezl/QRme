@@ -1,2 +1,2 @@
-window.location = 'https://qrme-bhern104.c9users.io/dashboard';
+window.location = "<%= dashboard_url %>";
 toastr.success("You were successfully unsuscribed of this event")

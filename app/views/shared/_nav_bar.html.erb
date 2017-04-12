@@ -20,6 +20,13 @@
         <% end %>
       </li>
     <% end %>
+    
+      <li>
+         <%= link_to events_invite_app_path, title: "Invite friends to app", remote: true do %>
+         <%= fa_icon "bullhorn" %> Invite friends
+        <% end %>
+      </li>
+      
     <li>
       <%= link_to destroy_user_session_path, method: :delete do %>
         <%= fa_icon "sign-out" %> Log Out

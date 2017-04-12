@@ -26,7 +26,10 @@ class EventsController < ApplicationController
   
   def accept_invitation_event
     @event = Event.find(params[:id])
-    Invitation.create(:event_id=>params[:id], :user_id=> current_user.id)
+    @invitation = Invitation.find_by(event_id: @event.id, user_id: current_user.id)
+    if @invitation == nil
+       Invitation.create(:event_id=> @event.id, :user_id=> current_user.id)
+    end
   end
   
   def remove_invite

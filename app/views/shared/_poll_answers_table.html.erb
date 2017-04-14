@@ -1,0 +1,15 @@
+ <table class="table">
+      <tr>
+        <th>Poll Answer</th>
+        <th>Vote Count</th>
+      </tr>
+       <% @poll.poll_answers.each do |ei| %>
+           <tr>
+             <td>
+               <%= ei.title %>
+             </td>
+             <td>
+                <%= ei.voteCount %>
+             </td>
+          <% end %>
+    </table>

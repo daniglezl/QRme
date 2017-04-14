@@ -15,6 +15,11 @@
     <%= f.label :recurrent, "Repeat" %>
     <%= f.number_field :recurrent, class: "form-control" %>
   </div>
+   <div class="checkbox">
+    <label>
+      <%= f.check_box :open %> Open
+    </label>
+  </div>
 
   <%= f.fields_for :event_instances do |ei| %>
     <div class="form-group">

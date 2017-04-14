@@ -9,23 +9,7 @@
    <div class="col-sm-5">
       <div class="panel panel-default polls-card">
         <div class="panel-body">
-           <table class="table">
-      <tr>
-        <th>Poll Answer</th>
-        <th>Vote Count</th>
-      </tr>
-       <% @poll.poll_answers.each do |ei| %>
-           <tr>
-             <td>
-               <%= ei.title %>
-             </td>
-             <td>
-                <%= ei.voteCount %>
-             </td>
-          <% end %>
-    </table>
-          
-          
+             <%= render "shared/poll_answers_table" %>
         </div>
       </div>
     </div>

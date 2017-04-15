@@ -76,9 +76,11 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             Polls
+             <% if can? :manage, @event %>
             <%= link_to new_poll_path(event_id: @event.id), class: "new-instance-button",
             remote: true do %>
               <%= fa_icon "plus" %>
+            <% end %>
             <% end %>
           </h3>
         </div>

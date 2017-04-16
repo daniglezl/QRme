@@ -15,7 +15,9 @@ module QRme
       "#{html_tag}".html_safe
     }
 
-    config.time_zone = 'Eastern Time (US & Canada)'
+     config.time_zone = 'Eastern Time (US & Canada)'
+     
+     #mailer configuration
 
     config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',

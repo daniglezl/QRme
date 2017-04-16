@@ -12,8 +12,12 @@
 <br>
 
   <div class= "actions">
-    <button style= "margin-right:15px;", type="button", class="btn btn-primary active btn-lg"> <%= fa_icon "check" %> Accept </button>
-     <%= link_to '/dashboard',
+    <%= link_to accept_invitation_event_event_path(id: @event.id), method: :post, class: "btn btn-primary active btn-lg", remote: true do %> 
+        <%= fa_icon "check" %> 
+        Accept
+    <% end %>
+    
+    <%= link_to '/dashboard',
       class: "btn btn-primary active btn-lg" do %><%= fa_icon "close" %>
       Decline
      <% end %> 

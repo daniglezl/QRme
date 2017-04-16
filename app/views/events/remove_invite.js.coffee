@@ -1,1 +1,2 @@
-toastr.success("The selected user was succefully removed from the invitees list", "Uninvite user")
+toastr.success("The user was removed from the invitation list successfully")
+$(".main-table-container").html("<%= j render 'shared/uninvite_users_list',  object: @invitation %>")

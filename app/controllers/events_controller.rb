@@ -13,18 +13,36 @@ class EventsController < ApplicationController
   end
   
   def invite_app
-    @user = current_user
+  end
+  
+  def invite_app_action
+    NotificationMailer.invite_app_email(params['enter_email'], current_user).deliver_now
   end
   
   def accept_event
     @event = Event.find(params[:id])
     @user = current_user
   end
-
+  
+  def accept_invitation_event
+    @event = Event.find(params[:id])
+    @invitation = Invitation.find_by(event_id: @event.id, user_id: current_user.id)
+    if @invitation == nil
+       Invitation.create(:event_id=> @event.id, :user_id=> current_user.id)
+    end
+  end
+  
   def remove_invite
     @invitation_remove = Invitation.find(params[:id])
+    @invitation = @invitation_remove.event.invitations
     @invitation_remove.destroy
   end
+  
+  def leave_event
+    @event = Event.find(params[:id])
+    @invitation_remove = Invitation.find_by(user_id: current_user.id, event_id: @event.id )
+    @invitation_remove.destroy
+  end  
   
   def show
     @event = EventInstance.find(params[:id]).event
@@ -35,7 +53,7 @@ class EventsController < ApplicationController
     @event.event_instances.build
   end
 
- def create
+  def create
     @event = current_user.events.build event_params
     @event.save
     e = Event.find(@event.id)
@@ -67,7 +85,7 @@ class EventsController < ApplicationController
     if @user.blank?
       @event.errors.add(:base, "A user with the specified email was not found")
     else
-      # logic to send invite email to user
+       NotificationMailer.accept_invite_event(current_user, @user, @event).deliver_now
     end
   end
   
@@ -77,10 +95,11 @@ class EventsController < ApplicationController
     @qrimg = qr.resize(200, 200)
   end
   
- def destroy
+  def destroy
     event = Event.find(params[:id])
     event.destroy
   end
+
 
   private
 

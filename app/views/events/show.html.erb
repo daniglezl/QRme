@@ -3,12 +3,6 @@
   <h5>Event Admin:</h5>
   <h5><i><%= @event.user.username %></i></h5>
 
-
- <%= link_to events_invite_app_path,
-  class: "invite-user-button", title: "Invite friends to app", remote: true do %>
-  <%= fa_icon "bullhorn" %>
-  <% end %>
-
   <h5>Number of Invitees: <%= @event.invitations.count %></h5>
 </div>
 
@@ -102,33 +96,43 @@
         <div class="panel-body">
             <div>
               <%= link_to invite_event_event_path(id: @event.id), remote: true do %>
-              Invite User
+              Invite Users
               <% end %>
             </div>
+            
             <div>
+              <%if @event.user_id == current_user.id%>
               <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
-              Uninvite User
+              Uninvite Users
               <% end %>
             </div>
+            <% end %>
+             
+             <div>
+              <%if @event.user_id != current_user.id%>
+              <%= link_to leave_event_event_path(id: @event.id), method: :delete,
+                  data: {confirm: "Are you sure?", message: "You will not be not able to see further information for this event.",
+              },   remote: true do %>
+              Leave Event
+              <% end %>
+            </div>
+            <% end %>
+            
             <%if @event.open%>
             <%= link_to qrcode_event_path(id: @event.id), class: "new-instance-button",
                 remote: true do %>
                 Print Invitations QR Code <% end %><br/>
                 <%end%>
-
-          <div>
-            <%= link_to events_uninvite_event_path(id: @event.id), remote: true do %>
-              Uninvite users
-            <% end %>
-          </div>
-        
-         <%= link_to event_path(id: @event.id), method: :delete,
+          
+            <%if @event.user_id == current_user.id%>     
+            <%= link_to event_path(id: @event.id), method: :delete,
               data: { confirm: "Are you sure?",
               message: "The event's information will be lost and cannot be recovered. All the event instances will also be removed",
               }, remote: true, title: "Delete" do %>
                Delete Event
               <% end %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>

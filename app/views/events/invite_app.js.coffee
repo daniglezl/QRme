@@ -1,2 +1,3 @@
 qrModal.open("<%= j render 'invite_app_form' %>")
-$("#user_email").focus()
+$("#guest_email").focus()
+$("#Button_done").click(->vex.closeAll())

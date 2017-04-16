@@ -9,7 +9,7 @@ module Api
 
       def invite
         event = Event.find_by(id: params[:id])
-        if event.blank?
+        if event.blank? || !event.open
           render json: { status: "Bad Request", error: "Event not found" }, status: 400 and return
         end
         inv = event.invitations.build(user_id: params[:user_id])

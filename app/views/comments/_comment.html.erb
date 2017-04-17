@@ -6,14 +6,16 @@
       title: "Reply", remote: true do %>
       <%= fa_icon "reply" %>
     <% end %>
-    <%= link_to edit_comment_path(comment), title: "Edit", remote: true do %>
-      <%= fa_icon "pencil" %>
-    <% end %>
-    <%= link_to comment_path(comment), method: :delete,
-    data: { confirm: "Are you sure?",
-    message: "The comment's information will be lost and cannot be recovered.",
-    }, remote: true, title: "Delete" do %>
-      <%= fa_icon "trash" %>
+    <% if can? :manage, comment %>
+      <%= link_to edit_comment_path(comment), title: "Edit", remote: true do %>
+        <%= fa_icon "pencil" %>
+      <% end %>
+      <%= link_to comment_path(comment), method: :delete,
+      data: { confirm: "Are you sure?",
+      message: "The comment's information will be lost and cannot be recovered.",
+      }, remote: true, title: "Delete" do %>
+        <%= fa_icon "trash" %>
+      <% end %>
     <% end %>
   </div>
   <span class="date"><%= comment.created_at.strftime "%b %e @  %l:%M %P" %></span>

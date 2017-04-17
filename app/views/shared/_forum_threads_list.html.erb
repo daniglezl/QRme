@@ -4,14 +4,16 @@
       <%= link_to ft.title, forum_thread_path(ft) %>
     </span>
     <span class="actions">
-      <%= link_to edit_forum_thread_path(ft), remote: true, title: "Edit" do %>
-        <%= fa_icon "pencil" %>
-      <% end %>
-      <%= link_to forum_thread_path(ft), method: :delete,
-      data: { confirm: "Are you sure?",
-      message: "The forums's information will be lost and cannot be recovered.",
-      }, remote: true, title: "Delete" do %>
-        <%= fa_icon "trash" %>
+      <% if can? :manage, ft %>
+        <%= link_to edit_forum_thread_path(ft), remote: true, title: "Edit" do %>
+          <%= fa_icon "pencil" %>
+        <% end %>
+        <%= link_to forum_thread_path(ft), method: :delete,
+        data: { confirm: "Are you sure?",
+        message: "The forums's information will be lost and cannot be recovered.",
+        }, remote: true, title: "Delete" do %>
+          <%= fa_icon "trash" %>
+        <% end %>
       <% end %>
     </span>
   </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410144230) do
+ActiveRecord::Schema.define(version: 20170415051354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,15 @@ ActiveRecord::Schema.define(version: 20170410144230) do
     t.index ["poll_id"], name: "index_poll_answers_on_poll_id", using: :btree
   end
 
+  create_table "poll_question_answers", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.string   "title"
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_poll_question_answers_on_poll_id", using: :btree
+  end
+
   create_table "polls", force: :cascade do |t|
     t.integer  "event_id"
     t.string   "name"
@@ -119,6 +128,15 @@ ActiveRecord::Schema.define(version: 20170410144230) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.integer  "userId"
+    t.integer  "voteCount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_votes_on_poll_id", using: :btree
+  end
+
   add_foreign_key "attachments", "events"
   add_foreign_key "attendances", "event_instances"
   add_foreign_key "attendances", "users"
@@ -131,5 +149,7 @@ ActiveRecord::Schema.define(version: 20170410144230) do
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "users"
   add_foreign_key "poll_answers", "polls"
+  add_foreign_key "poll_question_answers", "polls"
   add_foreign_key "polls", "events"
+  add_foreign_key "votes", "polls"
 end

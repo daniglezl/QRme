@@ -16,10 +16,26 @@ class PollsController < ApplicationController
 
   def show
     @poll = Poll.find(params[:id])
+    @voteStatus = 0
+    @userId = current_user.id
+    @poll.votes.each do |ei|
+      if ei.userId == current_user.id
+        @voteStatus = 1
+      end
+    end
   end
+  
   
   def vote
     @poll = Poll.find(params[:id])
+    poll = Poll.find(params[:id])
+    event = Event.find(@poll.event_id)
+    
+    vote = Vote.create()
+    vote.userId = current_user.id
+    vote.poll = poll
+    vote.save
+    @poll.save
   end
 
   def edit

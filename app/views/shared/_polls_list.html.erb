@@ -4,6 +4,7 @@
       <%= link_to ft.name, poll_path(ft) %>
     </span>
     <span class="actions">
+      <% if can? :manage, @event %>
       <%= link_to edit_poll_path(ft), remote: true, title: "Edit" do %>
         <%= fa_icon "pencil" %>
       <% end %>
@@ -13,6 +14,7 @@
       }, remote: true, title: "Delete" do %>
         <%= fa_icon "trash" %>
       <% end %>
+    <% end %>
     </span>
   </div>
 <% end %>

@@ -9,6 +9,8 @@ class Ability
     elsif user.is? :regular
       can :manage, Event, user_id: user.id
       can :manage, EventInstance, event: { user_id: user.id }
+      can :manage, Attachment, event: { user_id: user.id }
+      can :show, Attachment
     end
   end
 end
